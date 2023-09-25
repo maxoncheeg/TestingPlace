@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Periwinkle" >#c3bef0</SolidColorBrush>
+    <SolidColorBrush x:Key="Munsell">#068d9d</SolidColorBrush>
+    <SolidColorBrush x:Key="UltraViolet">#53599a</SolidColorBrush>
+    <SolidColorBrush x:Key="Snow">#fffbff</SolidColorBrush>
+    <SolidColorBrush x:Key="SpaceCadet">#25283d</SolidColorBrush>
+
+    <Color x:Key="ColorPeriwinkle">#c3bef0</Color>
+    <Color x:Key="ColorMunsell">#068d9d</Color>
+    <Color x:Key="ColorUltraViolet">#53599a</Color>
+    <Color x:Key="ColorSnow">#fffbff</Color>
+    <Color x:Key="ColorSpaceCadet">#25283d</Color>
+</ResourceDictionary>

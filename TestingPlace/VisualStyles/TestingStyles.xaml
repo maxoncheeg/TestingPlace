@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="Periwinkle" >#c3bef0</SolidColorBrush>
+    <SolidColorBrush x:Key="Munsell">#068d9d</SolidColorBrush>
+    <SolidColorBrush x:Key="UltraViolet">#53599a</SolidColorBrush>
+    <SolidColorBrush x:Key="Snow">#fffbff</SolidColorBrush>
+    <SolidColorBrush x:Key="SpaceCadet">#25283d</SolidColorBrush>
+    
+    <Color x:Key="ColorPeriwinkle">#c3bef0</Color>
+    <Color x:Key="ColorMunsell">#068d9d</Color>
+    <Color x:Key="ColorUltraViolet">#53599a</Color>
+    <Color x:Key="ColorSnow">#fffbff</Color>
+    <Color x:Key="ColorSpaceCadet">#25283d</Color>
+    
+    <Style x:Key="ToggleButonStl" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Periwinkle}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border Background="{StaticResource Periwinkle}" x:Name="border">
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="black">
+                                    <Storyboard >
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                         Storyboard.TargetName="border"
+                                                         To="{StaticResource ColorPeriwinkle}" Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="black"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="gray">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                         Storyboard.TargetName="border"
+                                                         To="{StaticResource ColorMunsell}" Duration="0:0:0:1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="gray"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="red">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                         Storyboard.TargetName="border"
+                                                         To="{StaticResource ColorSpaceCadet}" Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="red"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="firebrick">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                         Storyboard.TargetName="border"
+                                                         To="#C3BEF0" Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="firebrick"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

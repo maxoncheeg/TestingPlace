@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions
+{
+    [Serializable]
+    internal class DefaultTimeQuestion : TimeQuestion, ITestQuestion
+    {
+        public DefaultTimeQuestion(DefaultQuestion question, int milliseconds, float pointsMultiplier)
+            : base(question, milliseconds, pointsMultiplier) { }
+    }
+}
