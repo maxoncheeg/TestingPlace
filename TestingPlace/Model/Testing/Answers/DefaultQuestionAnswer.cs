@@ -10,8 +10,9 @@ namespace TestingPlace.Model.Testing.Answers
         private float _points;
 
         public float Points => _points;
+        public Answer Answer => _answer;
 
-        public DefaultQuestionAnswer(Answer answer, float points)
+        public DefaultQuestionAnswer(Answer answer, float points = 1)
         {
             _answer = answer;
             _points = points;

@@ -15,20 +15,19 @@ namespace TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions
 
         public readonly ITestQuestion Question;
         public readonly long InitialMilliseconds;
-        public long TimePointsMilliseconds { 
+        public long TimePointsMilliseconds
+        {
             get => _timePointsMilliseconds;
             set
             {
                 if (value > InitialMilliseconds)
                     _timePointsMilliseconds = InitialMilliseconds;
-                else if(value < 0)
+                else if (value < 0)
                     _timePointsMilliseconds = 0;
                 else
                     _timePointsMilliseconds = value;
-            } 
+            }
         }
-
-        public event Action TimeEnded;
 
         public string TextSeconds
         {
@@ -46,7 +45,11 @@ namespace TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions
             }
         }
 
+        public float PointsMultiplier => _pointsMultiplier;
+
         public long Milliseconds { get => _milliseconds; }
+
+        public event Action TimeEnded;
 
         public TimeQuestion(ITestQuestion question, int milliseconds, float pointsMultiplier)
         {

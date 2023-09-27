@@ -2,6 +2,6 @@
 {
     public interface IAnswer
     {
-        public bool Equals(IAnswer other);
+        bool Equals(IAnswer other);
     }
 }

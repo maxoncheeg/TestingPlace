@@ -8,13 +8,15 @@ namespace TestingPlace.Model.Testing.Questions
     public abstract class Question
     {
         protected IQuestionAnswer _answer;
-        protected List<IAnswer> _answers;
+        protected List<IAnswer> _answers = new();
 
         public string Text { get; private set; }
         public IReadOnlyList<IAnswer> Answers { get => _answers; }
 
         public Question(IQuestionAnswer answer, string text)
         {
+            if (answer is null) throw new ArgumentNullException(nameof(answer));
+
             _answer = answer;
             Text = text;
         }

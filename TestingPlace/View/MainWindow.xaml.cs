@@ -13,26 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing;
+using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
 using TestingPlace.Model.Testing.Questions.QuestionsTypes.PictureQuestions;
 using TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions;
 
 namespace TestingPlace.View
 {
-	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		public MainWindow()
-		{
-			InitializeComponent();
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
 
             Microsoft1();
         }
 
-		public async void Microsoft1()
-		{
+        public async void Microsoft1()
+        {
             ITestRepository rep = new SerializableTestRepository();
             if (await rep.LoadAsync())
             {
@@ -59,22 +60,16 @@ namespace TestingPlace.View
             DefaultPictureQuestion h = new(y, @"c:\hui\znaet\gde.png");
             List<ITestQuestion> list = new List<ITestQuestion>()
             {
-                new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("РЫБА1"), 10), new(), "Кто хороший рыбка?"),
-                new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("РЫБА2"), 10), new(), "Кто хороший рыбка2?"),
-                new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("РЫБА3"), 10), new(), "Кто хороший рыбка1?"),
-                new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("РЫБА4"), 10), new(), "Кто хороший рыбка3?"),
-                new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("РЫБА5"), 10), new(), "Кто хороший рыбка4?"),
-                e, h
+                new DefaultQuestion(new DefaultQuestionAnswer(new("РЫБА1"), 10), new(), "Кто хороший рыбка?"),
             };
 
-            Test test = new Test(list);
+            Test test = new Test(list) { Name = "первый" };
 
-            list.RemoveAt(0);
-            Test test1 = new Test(list);
+            ITestRepository repository = new XmlTestRepository();
+            repository.Tests = new() { test };
+            repository.Save();
 
-            ITestRepository repository = new SerializableTestRepository();
-            repository.Tests = new() { test, test1 };
-            await repository.SaveAsync();
+           // repository.Load();
         }
     }
 }
