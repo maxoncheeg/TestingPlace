@@ -2,7 +2,6 @@
 {
     public interface IQuestionAnswer
     {
-        public float Points { get; }
-        public float Check(IAnswer answer);
+        public double Check(IAnswer[] answer);
     }
 }

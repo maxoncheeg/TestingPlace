@@ -4,18 +4,23 @@ using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.Questions
 {
-    [Serializable]
     public class DefaultQuestion : Question, ITestQuestion
 	{
-        public DefaultQuestion(DefaultQuestionAnswer answer, List<Answer> incorrectAnswers, string text) 
-            : base(answer, text)
+        private DefaultQuestion(Guid id, Guid testId, string text, DefaultQuestionAnswer answer, List<DefaultQuestionAnswer> incorrectAnswers) 
+            : base(id, testId, answer, text, nameof(DefaultQuestion))
         {
             _answers = new(incorrectAnswers) { _answer as IAnswer };
             ShuffleAnswers(new());
         }
 
-        public float GetPoints() => _answer.Points;
+        public static DefaultQuestion Create(Guid testId, string text, DefaultQuestionAnswer answer, List<DefaultQuestionAnswer> incorrectAnswers)
+            => new(Guid.NewGuid(), testId, text, answer, incorrectAnswers);
 
-        public float Answer(IAnswer answer) => _answer.Check(answer);
+        public static DefaultQuestion Create(Guid id, Guid testId, string text, DefaultQuestionAnswer answer, List<DefaultQuestionAnswer> incorrectAnswers)
+            => new(id, testId, text, answer, incorrectAnswers);
+
+        public double GetPoints() => (_answer as DefaultQuestionAnswer).Points;
+
+        public double Answer(IAnswer[] answer) => _answer.Check(answer);
     }
 }

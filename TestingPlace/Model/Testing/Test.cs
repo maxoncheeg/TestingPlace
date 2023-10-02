@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing.Questions;
 
 namespace TestingPlace.Model.Testing
 {
-	[Serializable]
-	internal class Test
+	internal class Test : TestEntity
 	{
-		[XmlAttribute]
-		private List<ITestQuestion> _questions;
-
-		public string Name { get; set; }
+		private List<ITestQuestion> _questions = new();
 
 		public ITestQuestion this[int index]
 		{
@@ -20,11 +16,16 @@ namespace TestingPlace.Model.Testing
 
 		public int QuestionCount { get => _questions.Count; }
 
-		public Test() { }
-
-		public Test(List<ITestQuestion> questions)
+		private Test(Guid Id, string Name, List<ITestQuestion> _questions)
+			: base(Id, Name)
 		{
-            _questions = questions;
-		}
+			this._questions = new(_questions);
+        }
+
+		public static Test Create(Guid id, string name, List<ITestQuestion> questions) => 
+			new(id, name, questions);
+
+        public static Test Create(string name, List<ITestQuestion> questions) =>
+			new(Guid.NewGuid(), name, questions);
     }
 }

@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.Questions
 {
-    [Serializable]
-    public abstract class Question
+    public abstract class Question : QuestionEntity
     {
         protected IQuestionAnswer _answer;
         protected List<IAnswer> _answers = new();
 
-        public string Text { get; private set; }
         public IReadOnlyList<IAnswer> Answers { get => _answers; }
 
-        public Question(IQuestionAnswer answer, string text)
+        public Question(Guid id, Guid testId, IQuestionAnswer answer, string text, string type) : base(id, type, text, testId)
         {
             if (answer is null) throw new ArgumentNullException(nameof(answer));
 
             _answer = answer;
-            Text = text;
         }
 
         public void ShuffleAnswers(Random random, int steps = 5) => _answers.RandomShuffle(random, steps);

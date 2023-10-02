@@ -4,7 +4,7 @@ namespace TestingPlace.Model.Testing.Questions
 {
 	public interface ITestQuestion
 	{
-		public float GetPoints();
-		public float Answer(IAnswer answer);
+		public double GetPoints();
+		public double Answer(IAnswer[] answer);
 	}
 }

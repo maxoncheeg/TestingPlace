@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Windows.Documents;
+using TestingPlace.Data.Tests;
 
 namespace TestingPlace.Model.Testing.Answers
 {
-    [Serializable]
-    public class DefaultQuestionAnswer : IQuestionAnswer, IAnswer
+    public class DefaultQuestionAnswer : AnswerEntity,IQuestionAnswer, IAnswer
     {
-        private Answer _answer;
-        private float _points;
 
-        public float Points => _points;
-        public Answer Answer => _answer;
-
-        public DefaultQuestionAnswer(Answer answer, float points = 1)
+        private DefaultQuestionAnswer(Guid id, Guid questionId, string text, double points = 0) : base(id, questionId, text, points)
         {
-            _answer = answer;
-            _points = points;
         }
 
-        public float Check(IAnswer answer) =>
-            answer.Equals(_answer) ? _points : 0;
+        public static DefaultQuestionAnswer Create(Guid questionId, string text, double points = 0) =>
+            new(Guid.NewGuid(), questionId, text, points);
+
+        public static DefaultQuestionAnswer Create(Guid id, Guid questionId, string text, double points = 0) =>
+            new(id, questionId, text, points);
+
+        public double Check(IAnswer[] answer) =>
+            answer[0].Equals(this) ? Points : 0;
 
         public bool Equals(IAnswer other) =>
-            other is DefaultQuestionAnswer questionAnswer && _answer.Equals(questionAnswer)
-                || other is Answer answer && answer.Text == _answer.Text;
+            other is DefaultQuestionAnswer questionAnswer && questionAnswer.Text == Text;
     }
 }

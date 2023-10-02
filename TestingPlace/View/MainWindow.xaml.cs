@@ -34,42 +34,49 @@ namespace TestingPlace.View
 
         public async void Microsoft1()
         {
-            ITestRepository rep = new SerializableTestRepository();
-            if (await rep.LoadAsync())
-            {
-                Test test2 = rep.Tests.First();
-                string text = "";
-                for (int i = 0; i < test2.QuestionCount; i++)
-                {
-                    if (test2[i] is DefaultQuestion q) text += q.Text;
-                    else if (test2[i] is TimeQuestion t) text += (t.Question as DefaultQuestion).Text + " | time: " + t.InitialMilliseconds;
-                    else if (test2[i] is PictureQuestion p) text += (p.Question as DefaultQuestion).Text + " | path: " + p.PicturePath;
+            //ITestRepository rep = new SerializableTestRepository();
+            //if (await rep.LoadAsync())
+            //{
+            //    Test test2 = rep.Tests.First();
+            //    string text = "";
+            //    for (int i = 0; i < test2.QuestionCount; i++)
+            //    {
+            //        if (test2[i] is DefaultQuestion q) text += q.Text;
+            //        else if (test2[i] is TimeQuestion t) text += (t.Question as DefaultQuestion).Text + " | time: " + t.InitialMilliseconds;
+            //        else if (test2[i] is PictureQuestion p) text += (p.Question as DefaultQuestion).Text + " | path: " + p.PicturePath;
 
 
-                    text += Environment.NewLine;
-                }
+            //        text += Environment.NewLine;
+            //    }
 
-                TEXT.Text = text;
+            //    TEXT.Text = text;
 
-                return;
-            }
+            //    return;
+            //}
 
-            var x = new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("полдень"), 10), new(), "Время?");
-            var y = new DefaultQuestion(new Model.Testing.Answers.DefaultQuestionAnswer(new("полдень"), 10), new(), "Картинка?");
-            DefaultTimeQuestion e = new(x, 1000, 10);
-            DefaultPictureQuestion h = new(y, @"c:\hui\znaet\gde.png");
-            List<ITestQuestion> list = new List<ITestQuestion>()
-            {
-                new DefaultQuestion(new DefaultQuestionAnswer(new("РЫБА1"), 10), new(), "Кто хороший рыбка?"),
+            Guid testGuid = Guid.NewGuid();
+            Guid questionGuid = Guid.NewGuid();
+            List<ITestQuestion> q = new();
+
+            DefaultQuestionAnswer an = DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 2", 10);
+            List<DefaultQuestionAnswer> answer = new() 
+            { 
+                DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 1", 0),
+                DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 3", 0),
             };
 
-            Test test = new Test(list) { Name = "первый" };
+            DefaultQuestion question = DefaultQuestion.Create(questionGuid, testGuid, "WHO AM I???", an, answer);
 
-            ITestRepository repository = new XmlTestRepository();
+                q.Add(question);
+            Test test = Test.Create(testGuid, "первый", q);
+
+
+
+            ITestRepository repository = new JsonTestRepository();
             repository.Tests = new() { test };
             repository.Save();
 
-           // repository.Load();
+            //repository.Load();
         }
     }
 }

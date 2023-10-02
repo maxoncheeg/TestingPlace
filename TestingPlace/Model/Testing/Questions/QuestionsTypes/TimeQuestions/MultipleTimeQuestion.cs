@@ -4,22 +4,22 @@ using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions
 {
-    [Serializable]
-    internal class MultipleTimeQuestion : TimeQuestion, IMultipleTestQuestion
-    {
-        public MultipleTimeQuestion(IMultipleTestQuestion question, int milliseconds, float pointsMultiplier)
-            : base(question, milliseconds, pointsMultiplier)
-        { }
 
-        public float Answer(List<IAnswer> answers)
-        {
-            float points = (Question as IMultipleTestQuestion).Answer(answers),
-                timePoints = _pointsMultiplier * points;
+    //internal class MultipleTimeQuestion : TimeQuestion, IMultipleTestQuestion
+    //{
+    //    public MultipleTimeQuestion(IMultipleTestQuestion question, int milliseconds, float pointsMultiplier)
+    //        : base(question, milliseconds, pointsMultiplier)
+    //    { }
 
-            if (_timePointsMilliseconds > _milliseconds)
-                timePoints *= _milliseconds / _timePointsMilliseconds;
+    //    public float Answer(List<IAnswer> answers)
+    //    {
+    //        float points = (Question as IMultipleTestQuestion).Answer(answers),
+    //            timePoints = _pointsMultiplier * points;
 
-            return points + timePoints;
-        }
-    }
+    //        if (_timePointsMilliseconds > _milliseconds)
+    //            timePoints *= _milliseconds / _timePointsMilliseconds;
+
+    //        return points + timePoints;
+    //    }
+    //}
 }
