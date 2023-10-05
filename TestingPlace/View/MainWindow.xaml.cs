@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlace.Data.Tests;
+using TestingPlace.Data.Tests.Json;
 using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
@@ -55,28 +56,61 @@ namespace TestingPlace.View
             //}
 
             Guid testGuid = Guid.NewGuid();
-            Guid questionGuid = Guid.NewGuid();
             List<ITestQuestion> q = new();
+            for (int i = 0; i < 3; i++)
+            {
 
-            DefaultQuestionAnswer an = DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 2", 10);
-            List<DefaultQuestionAnswer> answer = new() 
-            { 
-                DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 1", 0),
-                DefaultQuestionAnswer.Create(questionGuid, "ОТВЕТ 3", 0),
+
+                Guid questionGuid = Guid.NewGuid();
+
+                QuestionAnswer an = QuestionAnswer.Create(questionGuid, "ОТВЕТ 2", 10);
+                List<QuestionAnswer> answer = new()
+            {
+                QuestionAnswer.Create(questionGuid, "ОТВЕТ 1", 0),
+                QuestionAnswer.Create(questionGuid, "ОТВЕТ 3", 0),
             };
 
-            DefaultQuestion question = DefaultQuestion.Create(questionGuid, testGuid, "WHO AM I???", an, answer);
+                DefaultQuestion question = DefaultQuestion.Create(questionGuid, testGuid, "WHO AM I???", an, answer);
 
                 q.Add(question);
+            }
             Test test = Test.Create(testGuid, "первый", q);
 
 
 
             ITestRepository repository = new JsonTestRepository();
-            repository.Tests = new() { test };
-            repository.Save();
 
-            //repository.Load();
+            repository.Tests = new() { test };
+            await repository.SaveAsync();
+            ВЫВОД_СЕНЬОРА(repository.Tests[0], TEXT);
+
+            repository.Tests = new(); // обнуляю тесты
+
+            await repository.LoadAsync();
+            ВЫВОД_СЕНЬОРА(repository.Tests[0], TEXT2);
+        }
+
+        private void ВЫВОД_СЕНЬОРА(Test test, TextBlock x)
+        {
+            string text = "";
+            for (int i = 0; i < test.QuestionCount; i++)
+            {
+                if (test[i] is DefaultQuestion q)
+                {
+                    text += q.Text;
+                    text += "  ОТВЕТЫ:\n\r";
+                    foreach (QuestionAnswer answer in q.Answers)
+                    {
+                        text += "\t\t" + answer.Text + " за " + answer.Points + " очков\n\r";
+                    }
+                }
+
+
+                text += Environment.NewLine;
+                text += Environment.NewLine;
+            }
+
+            x.Text = text;
         }
     }
 }

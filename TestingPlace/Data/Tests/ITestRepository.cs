@@ -8,9 +8,6 @@ namespace TestingPlace.Data.Tests
     {
         public List<Test> Tests { get; set; }
 
-        public bool Save();
-        public bool Load();
-
         public Task<bool> SaveAsync();
         public Task<bool> LoadAsync();
     }

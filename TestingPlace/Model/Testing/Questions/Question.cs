@@ -8,9 +8,9 @@ namespace TestingPlace.Model.Testing.Questions
     public abstract class Question : QuestionEntity
     {
         protected IQuestionAnswer _answer;
-        protected List<IAnswer> _answers = new();
+        protected List<QuestionAnswer> _answers = new();
 
-        public IReadOnlyList<IAnswer> Answers { get => _answers; }
+        public IReadOnlyList<QuestionAnswer> Answers => _answers;
 
         public Question(Guid id, Guid testId, IQuestionAnswer answer, string text, string type) : base(id, type, text, testId)
         {

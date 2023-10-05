@@ -4,18 +4,24 @@ using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.Questions
 {
- //   public class MultipleQuestion : Question, IMultipleTestQuestion
-	//{
- //       public MultipleQuestion(MultipleQuestionAnswer answer, List<Answer> incorrectAnswers, string text) : base(answer, text)
- //       {
- //           _answers = new(incorrectAnswers) { _answer as IAnswer };
- //           ShuffleAnswers(new());
- //       }
+    //public class MultipleQuestion : Question, ITestQuestion
+    //{
+    //    private MultipleQuestion(Guid id, Guid testId, MultipleQuestionAnswer answer, List<QuestionAnswer> incorrectAnswers, string text) : base(answer, text, nameof(MultipleQuestion)
+    //    {
+    //        _answers = new(incorrectAnswers);
+    //        _answers.AddRange((_answer as MultipleQuestionAnswer).Answers);
 
- //       public float Answer(IAnswer answer) => _answer.Check(answer);
+    //        ShuffleAnswers(new());
+    //    }
 
- //       public float Answer(List<IAnswer> answers) => (_answer as MultipleQuestionAnswer).Check(answers);
+    //    public static MultipleQuestion Create(Guid testId, string text, MultipleQuestionAnswer answer, List<QuestionAnswer> incorrectAnswers)
+    //        => new(Guid.NewGuid(), testId, answer, incorrectAnswers, text);
 
- //       public float GetPoints() => _answer.Points;
- //   }
+    //    public static MultipleQuestion Create(Guid id, Guid testId, string text, MultipleQuestionAnswer answer, List<QuestionAnswer> incorrectAnswers)
+    //        => new(id, testId, answer, incorrectAnswers, text);
+
+    //    public double Answer(QuestionAnswer[] answers) => (_answer as MultipleQuestionAnswer).Check(answers);
+
+    //    public double GetPoints() => (_answer as MultipleQuestionAnswer).Points;
+    //}
 }

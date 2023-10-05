@@ -9,7 +9,7 @@ namespace TestingPlace.Data
 {
     internal class DataManager
     {
-        private static DataManager _manager = null;
+        private static DataManager? _manager = null;
 
         private readonly ITestRepository _testRepository;
 
@@ -21,13 +21,13 @@ namespace TestingPlace.Data
 
         public static DataManager Instance(ITestRepository testRepository) => new(testRepository);
 
-        public static DataManager Instance() => _manager;
+        public static DataManager? Instance() => _manager;
 
         public bool SaveAll()
         {
             bool result = true;
 
-            if (!_testRepository.Save()) result = false;
+           // if (!_testRepository.Save()) result = false;
 
             return result;
         }
@@ -36,7 +36,7 @@ namespace TestingPlace.Data
         {
             bool result = true;
 
-            if (!_testRepository.Load()) result = false;
+           // if (!_testRepository.Load()) result = false;
 
             return result;
         }

@@ -5,6 +5,6 @@ namespace TestingPlace.Model.Testing.Questions
 	public interface ITestQuestion
 	{
 		public double GetPoints();
-		public double Answer(IAnswer[] answer);
+		public double Answer(QuestionAnswer[] answer);
 	}
 }

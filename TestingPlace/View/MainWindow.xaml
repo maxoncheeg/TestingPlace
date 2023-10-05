@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="Red">
-        <TextBlock x:Name="TEXT" Background="AliceBlue" Foreground="BlueViolet" FontSize="16" Margin="0,0,0,10"
+        <TextBlock x:Name="TEXT" Background="AliceBlue" Foreground="Red" FontSize="11" Margin="0,0,400,10"
                    TextAlignment="Center"/>
+        <TextBlock x:Name="TEXT2" Background="AliceBlue" Foreground="Green" FontSize="11" Margin="400,0,0,10"
+            TextAlignment="Center"/>
     </Grid>
 </Window>

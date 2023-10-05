@@ -2,6 +2,6 @@
 {
     public interface IQuestionAnswer
     {
-        public double Check(IAnswer[] answer);
+        public double Check(IQuestionAnswer[] answer);
     }
 }

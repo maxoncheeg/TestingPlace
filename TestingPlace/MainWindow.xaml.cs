@@ -23,6 +23,14 @@ namespace TestingPlace
         public MainWindow()
         {
             InitializeComponent();
+
+            List<int> x = new();
+
+            x.Select(x => x + 1);
+
+            x.Where(x => x > 10);
+
+            x.FindAll(x => x > 20);
         }
     }
 }
