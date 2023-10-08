@@ -8,21 +8,13 @@
         Title="StartupWindow" Height="480" Width="600"
         AllowsTransparency="True"
         WindowStyle="None"
-        Background="Transparent"       
+        Background="Transparent" 
+        WindowStartupLocation="CenterScreen"
         >
-    
     <Window.Resources>
         <ResourceDictionary Source="/TestingPlace;component/VisualStyles/TestingColors.xaml"/>
     </Window.Resources>
-
-    <!--<Window.Effect>
-        <DropShadowEffect
-        BlurRadius="10" 
-        ShadowDepth="0" 
-        Opacity="0.9"
-        Color="#DEFCF9"/>
-    </Window.Effect>-->
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -34,7 +26,6 @@
             <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <!--#C3BEF0 #CADEFC #DEFCF9-->
 
         <Grid Grid.Column="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -51,7 +42,7 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="40,10,90,0"
-                    Background="{StaticResource Snow}" Opacity="0.3"
+                    Background="{StaticResource Periwinkle}" Opacity="0.3"
                     CornerRadius="10"
                     MouseDown="Border_MouseDown"/>
 
@@ -65,12 +56,32 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Margin="0,10,0,0" Background="Red" Grid.Column="5" CornerRadius="10"></Border>
-                <Border Margin="0,10,0,0" Background="LightBlue" Grid.Column="3" CornerRadius="10"></Border>
+                <Border Margin="0,10,0,0" Grid.Column="5" CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="0.283"/>
+                            <GradientStop Color="#FFEE6D6D" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <DockPanel>
+                        <Button Opacity="0" Click="CloseWindow" VerticalContentAlignment="Center" Content="x" Foreground="White"></Button>
+                    </DockPanel>
+                </Border>
+                
+                <Border Margin="0,10,0,0" Grid.Column="3" CornerRadius="10">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF786BF0"/>
+                            <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="0.213"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <DockPanel>
+                        <Button Opacity="0" Click="MinimizeWindow" VerticalContentAlignment="Center" Content="x" Foreground="White"></Button>
+                    </DockPanel>
+                </Border>
+
             </Grid>
         </Grid>
-
-
 
         <DockPanel Grid.Column="1" Grid.Row="1">
             <Border BorderBrush="AliceBlue" BorderThickness="0" CornerRadius="30" Background="AliceBlue">
@@ -91,60 +102,94 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="9*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="0.8*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.2*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.4*"/>
                         </Grid.RowDefinitions>
 
+                        <DockPanel>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="36" FontWeight="Bold">
+                                <TextBlock.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" MappingMode="RelativeToBoundingBox">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                                <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="#FF936FE5" Offset="0"/>
+                                        <GradientStop Color="#FFE390CF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </TextBlock.Foreground>
+                                    TestingPlace</TextBlock>
+                        </DockPanel>
+
+                        <DockPanel LastChildFill="True"
+                            Grid.Row="1">
+                            <Label  HorizontalAlignment="Center" DockPanel.Dock="Top" Content="ЛОГИН" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                </Label.Foreground>
+                            </Label>
+                            <TextBox 
+                                Text="{Binding Login}"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                FontFamily="Cascadia Code" FontSize="22">
+                                <TextBox.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                </TextBox.Foreground>
+                            </TextBox>
+                        </DockPanel>
+
+                        <DockPanel LastChildFill="True"
+                            Grid.Row="3">
+                            <Label 
+                                HorizontalAlignment="Center" DockPanel.Dock="Top" Content="ПАРОЛЬ" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                </Label.Foreground>
+                            </Label>
+                            <PasswordBox  
+                                HorizontalContentAlignment ="Center"
+                                VerticalContentAlignment="Center" x:Name="lol" DockPanel.Dock="Top"
+                                PasswordChar="{Binding Password}"
+                                FontFamily="Cascadia Code" FontSize="22">
+                                <PasswordBox.Foreground>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                </PasswordBox.Foreground>
+                            </PasswordBox>
+                        </DockPanel>
+
                         <Button
-                            Background="#C3BEF0"
+                            Command="{Binding StartTest}"
+                            Margin="0,3,0,0"
+                            Grid.Row="5"
                             Style="{StaticResource ToggleButonStl}"
-                            FontFamily="Cascadia Code" FontSize="20" FontWeight="ExtraLight" 
-                            Foreground="AliceBlue">
-                            <Button.Content>
-                                Начать Тестирование
-                            </Button.Content>
-
-                            <Button.BorderBrush>#C3BEF0</Button.BorderBrush>
-
+                            Content="Начать тестирование">
+                            
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="30"/>
-                                    <!--<Setter Property="BorderBrush" Value="#C3BEF0"/>-->
                                 </Style>
                             </Button.Resources>
-
-                            <!--<Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Background" Value="#C3BEF0"/>
-                                    <Setter Property="Foreground" Value="#DEFCF9"/>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            -->
-                            <!--Background="#C3BEF0" Foreground="#DEFCF9"-->
-                            <!--
-                                            <Setter Property="Background" Value="#CADEFC"/>
-                                            <Setter Property="Foreground" Value="#C3BEF0"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>-->
-
-                            <Button.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="10" 
-                                    ShadowDepth="0" 
-                                    Opacity="0.4"
-                                    Color="#DEFCF9"/>
-                            </Button.Effect>
                         </Button>
+
+                        <TextBlock Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Hyperlink Command="{Binding Register}" Foreground="{StaticResource SpaceCadet}">...или зарегистрироваться</Hyperlink>
+                        </TextBlock>
                     </Grid>
                 </Grid>
             </Border>
