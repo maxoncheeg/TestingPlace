@@ -5,11 +5,190 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestingPlace.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="Red">
-        <TextBlock x:Name="TEXT" Background="AliceBlue" Foreground="Red" FontSize="11" Margin="0,0,400,10"
-                   TextAlignment="Center"/>
-        <TextBlock x:Name="TEXT2" Background="AliceBlue" Foreground="Green" FontSize="11" Margin="400,0,0,10"
-            TextAlignment="Center"/>
-    </Grid>
+        Title="MainWindow" 
+        Height="600" Width="800"
+        MinHeight="600" MinWidth="800"
+        WindowState="Maximized" RenderTransformOrigin="0.5,0.5">
+    <Window.Resources>
+        <ResourceDictionary Source="/TestingPlace;component/VisualStyles/TestingColors.xaml"/>
+    </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad">
+            <LinearGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="103.707"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="{DynamicResource ColorAmanzing}"/>
+            <GradientStop Color="{DynamicResource ColorAwesome}" Offset="1"/>
+            <GradientStop Color="{DynamicResource ColorMunsell}" Offset="0.256"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" FontFamily="Cascadia Mono">
+            <MenuItem Header="Тесты">
+                <MenuItem Header="Загрузить тест из Json-файла"/>
+            </MenuItem>
+            <MenuItem Header="О программе">
+                <MenuItem Header="Ссылки">
+                    <Hyperlink>Git</Hyperlink>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Grid Background="{StaticResource Snow}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.8*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Статистика-->
+            <Grid Grid.Column="0" Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+
+                <UniformGrid Grid.Row="0" Rows="2" Columns="1">
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Login}" TextWrapping="Wrap" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="Bold">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" MappingMode="RelativeToBoundingBox">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="{StaticResource ColorMunsell}" Offset="0"/>
+                                    <GradientStop Color="{StaticResource ColorPeriwinkle}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Viewbox>
+                    <Viewbox Stretch="Uniform" HorizontalAlignment="Right">
+                        <TextBlock Text="{Binding Name}" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="Bold">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" MappingMode="RelativeToBoundingBox">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                            <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                            <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5"/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF936FE5" Offset="0"/>
+                                    <GradientStop Color="#FFE390CF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Viewbox>
+                </UniformGrid>
+
+                <UniformGrid Columns="1" Grid.Row="1">
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Top" FontFamily="Cascadia Mono" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Text="Процент прохождения тестов:">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="{DynamicResource ColorUltraViolet}"/>
+                                    <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <Viewbox DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                            <Label FontFamily="Cascadia Mono" HorizontalAlignment="Right" Content="285%" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="{DynamicResource ColorAmanzing}"/>
+                                        <GradientStop Color="{DynamicResource ColorAwesome}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </Viewbox>
+                    </DockPanel>
+
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Top" FontFamily="Cascadia Mono" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Text="Средний процент прохождения тестов:">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="{DynamicResource ColorUltraViolet}"/>
+                                    <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <Viewbox DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                            <Label FontFamily="Cascadia Mono" HorizontalAlignment="Right" Content="285%" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="{DynamicResource ColorAmanzing}"/>
+                                        <GradientStop Color="{DynamicResource ColorAwesome}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </Viewbox>
+                    </DockPanel>
+
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Top" FontFamily="Cascadia Mono" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Text="Общее кол-во баллов:">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="{DynamicResource ColorUltraViolet}"/>
+                                    <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <Viewbox DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                            <Label FontFamily="Cascadia Mono" HorizontalAlignment="Right" Content="285%" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="{DynamicResource ColorAmanzing}"/>
+                                        <GradientStop Color="{DynamicResource ColorAwesome}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </Viewbox>
+                    </DockPanel>
+
+                    <DockPanel LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Top" FontFamily="Cascadia Mono" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Left" Text="Решено тестов:">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="{DynamicResource ColorUltraViolet}"/>
+                                    <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <Viewbox DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                            <Label FontFamily="Cascadia Mono" HorizontalAlignment="Right" Content="{Binding SolvedTests, Mode=OneWay}" FontWeight="Bold" FontSize="16">
+                                <Label.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="{DynamicResource ColorAmanzing}"/>
+                                        <GradientStop Color="{DynamicResource ColorAwesome}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Label.Foreground>
+                            </Label>
+                        </Viewbox>
+                    </DockPanel>
+
+
+
+                </UniformGrid>
+
+            </Grid>
+
+            <!--Меню-->
+            <DockPanel Grid.Column="1" Background="AliceBlue">
+                <UserControl Content="{Binding ActualControl}"/>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
 </Window>

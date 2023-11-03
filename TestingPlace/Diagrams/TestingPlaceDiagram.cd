@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="TestingPlace.Model.Testing.Questions.DefaultQuestion">
+    <Position X="4.5" Y="7.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAA=</HashCode>
+      <FileName>Model\Testing\Questions\DefaultQuestion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Questions.OrderQuestion">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Questions\OrderQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Questions.Question">
+    <Position X="4.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAACAAAAAAAAAAQAAABAAAAAA=</HashCode>
+      <FileName>Model\Testing\Questions\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Test" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAACAAAAAAACAAAAEQAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Test.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Answers.AnswerListExtensions">
+    <Position X="2" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\AnswerListExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Answers.MultipleQuestionAnswer" BaseTypeListCollapsed="true">
+    <Position X="15" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgAAAAAAAACACAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\MultipleQuestionAnswer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Answers.OrderQuestionAnswer">
+    <Position X="17.25" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\OrderQuestionAnswer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Model.Testing.Answers.QuestionAnswer" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="4.75" Width="3.5" />
+    <InheritanceLine Type="TestingPlace.Data.Tests.AnswerEntity" FixedToPoint="true">
+      <Path>
+        <Point X="12.875" Y="4.324" />
+        <Point X="12.875" Y="4.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\QuestionAnswer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Users.Json.JsonUserRepository" BaseTypeListCollapsed="true">
+    <Position X="28" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Data\Users\Json\JsonUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Data.Users.UserEntity" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAACAQAAAAAAAACEAQQAAAAAAA=</HashCode>
+      <FileName>Data\Users\UserEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.Json.JsonQuestion">
+    <Position X="21.25" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAA=</HashCode>
+      <FileName>Data\Tests\Json\JsonQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.Json.JsonTest">
+    <Position X="21.25" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Data\Tests\Json\JsonTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.Json.JsonTestRepository">
+    <Position X="24.5" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Data\Tests\Json\JsonTestRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.AnswerEntity">
+    <Position X="12" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAACAQAAAA=</HashCode>
+      <FileName>Data\Tests\AnswerEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.QuestionEntity">
+    <Position X="5.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAEAIAAAAAAAAAAAQAACAAAAAA=</HashCode>
+      <FileName>Data\Tests\QuestionEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.TestEntity">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Data\Tests\TestEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Tests.TestRepository">
+    <Position X="24.25" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAgAAAAAABAAAAAAAAAAIEIAAAABgAAAAAAAAA=</HashCode>
+      <FileName>Data\Tests\TestRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestingPlace.Data.Users.UserRepository">
+    <Position X="27.75" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAgAAAAAABAAAAAAAAAAIEIAIAAAgAAAAAAAAA=</HashCode>
+      <FileName>Data\Users\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="TestingPlace.Model.Testing.Questions.ITestQuestion">
+    <Position X="2.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Model\Testing\Questions\ITestQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TestingPlace.Model.Testing.Answers.IQuestionAnswer">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\IQuestionAnswer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TestingPlace.Data.IBaseRepository&lt;T&gt;">
+    <Position X="26.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAgAAAAAABAAAAAAAAAAIEIAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Data\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TestingPlace.Data.IEntity">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

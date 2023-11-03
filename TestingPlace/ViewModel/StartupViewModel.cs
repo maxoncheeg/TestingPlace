@@ -1,19 +1,28 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows;
+using TestingPlace.Data;
+using System.Linq;
 using TestingPlace.ViewModel.Commands;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace TestingPlace.ViewModel
 {
     class StartupViewModel : INotifyPropertyChanged
     {
-        private string _login;
-        private string _password;
+        private string _login = string.Empty;
+        private string _password = string.Empty;
 
-        private PropertyChangedEventArgs _loginArgs  = new(nameof(Login));
+        private DataManager _manager;
+
+        private PropertyChangedEventArgs _loginArgs = new(nameof(Login));
         private PropertyChangedEventArgs _passwordArgs = new(nameof(Password));
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event Action? RegistrationClicked;
+        public event Action? LoginSuccess;
+        public event Action<string>? LoginError;
 
         #region Bindings
         public string Login
@@ -41,19 +50,29 @@ namespace TestingPlace.ViewModel
         public Command StartTest => Command.Create(StartTestMethod);
         private void StartTestMethod(object? sender, EventArgs e)
         {
-            MessageBox.Show($"Уважаемый {_login}, начинаем тестирование. Ваш пароль - {_password}");
+            if (_manager.TryAuthorizeUser(Login, Password))
+            {
+                LoginSuccess?.Invoke();
+            }
+            else
+            {
+                LoginError?.Invoke("Не удалось войти. Ошибка в логине или пароле.");
+            }
         }
 
         public Command Register => Command.Create(RegisterMethod);
         private void RegisterMethod(object? sender, EventArgs e)
         {
-            MessageBox.Show("НЕЛЬЗЯ РЕГИСТРИРОВАТЬСЯ");
+            RegistrationClicked?.Invoke();
         }
         #endregion
 
         public StartupViewModel()
         {
-
+            if (DataManager.Instance() is DataManager manager && manager != null)
+                _manager = manager;
+            else
+                throw new InvalidOperationException();
         }
     }
 }

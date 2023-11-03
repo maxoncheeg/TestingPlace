@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using TestingPlace.ViewModel;
 
 namespace TestingPlace.View
@@ -24,6 +14,29 @@ namespace TestingPlace.View
         {
             InitializeComponent();
             DataContext = new StartupViewModel();
+            if(DataContext is StartupViewModel viewModel)
+            {
+                viewModel.LoginSuccess += OnLoginSuccess;
+                viewModel.LoginError += OnLoginError;
+                viewModel.RegistrationClicked += OnRegistrationClicked;
+            }
+        }
+
+        private void OnLoginSuccess()
+        {
+            MainWindow window = new(this);
+            window.ShowDialog();
+        }
+
+        private void OnRegistrationClicked()
+        {
+            RegistrationWindow window = new(this);
+            window.ShowDialog();
+        }
+
+        private void OnLoginError(string message)
+        {
+            MessageBox.Show(message);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -40,6 +53,12 @@ namespace TestingPlace.View
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is StartupViewModel viewModel && sender is PasswordBox box)
+                viewModel.Password = box.Password;
         }
     }
 }

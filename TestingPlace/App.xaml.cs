@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using TestingPlace.Data;
+using TestingPlace.Data.Tests.Json;
+using TestingPlace.Data.Users.Json;
 
 namespace TestingPlace
 {
@@ -14,6 +10,11 @@ namespace TestingPlace
     /// </summary>
     public partial class App : Application
     {
-        //DataManager dataManager = DataManager.Create()
+        public App()
+        {
+            DataManager dataManager = 
+                DataManager.Instance(new JsonTestRepository(), new JsonUserRepository());
+            dataManager.LoadAllAsync().Wait();
+        }
     }
 }

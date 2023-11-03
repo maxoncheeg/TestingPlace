@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="TestingPlace.View.UserControls.MainMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestingPlace.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/TestingPlace;component/VisualStyles/TestingColors.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Columns="1" Grid.Column="1" Grid.Row="1">
+            <Button Command="{Binding TestListOpen}" Margin="4" Grid.Row="5" Style="{StaticResource ToggleButonStl}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <TextBlock Margin="5" FontSize="26" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Foreground="{StaticResource Snow}" FontFamily="Cascadia Mono" FontWeight="Medium">
+                            Начать тестирование
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+
+            <Button Command="{Binding StartTest}" Margin="4" Grid.Row="5" Style="{StaticResource ToggleButonStl}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <TextBlock Margin="5" FontSize="26" TextWrapping="Wrap" Foreground="{StaticResource Snow}" FontFamily="Cascadia Mono" FontWeight="Medium">
+                            Создать тест
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+
+            <Button Command="{Binding StartTest}" Margin="4" Grid.Row="5" Style="{StaticResource ToggleButonStl}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Content>
+                    <TextBlock Margin="5" FontSize="26" TextWrapping="Wrap" Foreground="{StaticResource Snow}" FontFamily="Cascadia Mono" FontWeight="Medium">
+                        Рейтинг
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</UserControl>

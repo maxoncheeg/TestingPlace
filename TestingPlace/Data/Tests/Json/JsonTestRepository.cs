@@ -10,11 +10,9 @@ using TestingPlace.Model.Testing.Questions;
 
 namespace TestingPlace.Data.Tests.Json
 {
-    class JsonTestRepository : ITestRepository
+    class JsonTestRepository : TestRepository
     {
-        private string _savePath;
-
-        public List<Test> Tests { get; set; } = new();
+        private readonly string _savePath;
 
         public JsonTestRepository() 
         {
@@ -34,7 +32,7 @@ namespace TestingPlace.Data.Tests.Json
 
             if (jsonTests is null) return false;
 
-            Tests = new();
+            _tests = new();
 
             foreach (JsonTest jsonTest in jsonTests)
             {
@@ -74,24 +72,23 @@ namespace TestingPlace.Data.Tests.Json
                 }
 
                 if (questions.Count > 0)
-                    Tests.Add(Test.Create(jsonTest.Test.Id, jsonTest.Test.Name, questions));
+                    _tests.Add(Test.Create(jsonTest.Test.Id, jsonTest.Test.Name, jsonTest.Test.Theme, jsonTest.Test.AuthorId, questions));
             }
 
             return true;
         }
 
-        public async Task<bool> LoadAsync()
+        public async override Task<bool> LoadAsync()
         {
             return await Task.Run(Load);
         }
 
+
         public bool Save()
         {
-            if (Tests.Count <= 0) return false;
-
             List<JsonTest> jsonTests = new();
 
-            foreach (Test test in Tests)
+            foreach (Test test in _tests)
             {
                 List<JsonQuestion> jsonQuestions = new();
 
@@ -111,7 +108,7 @@ namespace TestingPlace.Data.Tests.Json
             return true;
         }
 
-        public async Task<bool> SaveAsync()
+        public async override Task<bool> SaveAsync()
         {
             return await Task.Run(Save);
         }

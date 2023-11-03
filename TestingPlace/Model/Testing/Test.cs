@@ -17,17 +17,17 @@ namespace TestingPlace.Model.Testing
 
 		public int QuestionCount { get => _questions.Count; }
 
-		private Test(Guid Id, string Name, List<ITestQuestion> _questions)
-			: base(Id, Name)
+		private Test(Guid Id, string Name, TestTheme theme, Guid AuthorId, List<ITestQuestion> _questions)
+			: base(Id, Name, theme, AuthorId)
 		{
 			this._questions = new(_questions);
         }
 
-		public static Test Create(Guid id, string name, List<ITestQuestion> questions) => 
-			new(id, name, questions);
+		public static Test Create(Guid id, string name, TestTheme theme, Guid authorId, List<ITestQuestion> questions) => 
+			new(id, name, theme, authorId, questions);
 
-        public static Test Create(string name, List<ITestQuestion> questions) =>
-			new(Guid.NewGuid(), name, questions);
+        public static Test Create(string name, TestTheme theme, Guid authorId, List<ITestQuestion> questions) =>
+			new(Guid.NewGuid(), name, theme, authorId, questions);
 
         public IEnumerator GetEnumerator()
         {

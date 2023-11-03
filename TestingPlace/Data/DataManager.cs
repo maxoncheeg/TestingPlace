@@ -1,62 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System;
 using System.Threading.Tasks;
 using TestingPlace.Data.Tests;
+using TestingPlace.Data.Users;
 
 namespace TestingPlace.Data
 {
     internal class DataManager
     {
+
         private static DataManager? _manager = null;
 
-        private readonly ITestRepository _testRepository;
+        public int[] Array { get; set; }
 
-        private DataManager(ITestRepository testRepository)
+        private UserEntity? _currentUser = null;
+
+        private readonly TestRepository _testRepository;
+        private readonly UserRepository _userRepository;
+
+        public TestRepository TestRepository => _testRepository;
+        public UserRepository UserRepository => _userRepository;
+
+        public UserEntity? CurrentUser => _currentUser;
+
+        private DataManager(TestRepository _testRepository, UserRepository _userRepository)
         {
-            _testRepository = testRepository;
+            this._testRepository = _testRepository;
+            this._userRepository = _userRepository;
             _manager = this;
+
         }
 
-        public static DataManager Instance(ITestRepository testRepository) => new(testRepository);
+        public static DataManager Instance(TestRepository testRepository, UserRepository userRepository) 
+            => new(testRepository, userRepository);
 
         public static DataManager? Instance() => _manager;
 
-        public bool SaveAll()
+        public async Task SaveAllAsync()
         {
-            bool result = true;
-
-           // if (!_testRepository.Save()) result = false;
-
-            return result;
+            await _testRepository.SaveAsync();
+            await _userRepository.SaveAsync();
         }
 
-        public bool LoadAll()
+        public async Task LoadAllAsync()
         {
-            bool result = true;
-
-           // if (!_testRepository.Load()) result = false;
-
-            return result;
+            await _testRepository.LoadAsync();
+            await _userRepository.LoadAsync();
         }
 
-        public async Task<bool> SaveAllAsync()//доделать
+        public bool TryAuthorizeUser(string login, string password)
         {
-            bool result = true;
+            password = Convert.ToBase64String(MD5.HashData(Encoding.UTF8.GetBytes(password)));
 
-            if (!await _testRepository.SaveAsync()) result = false;
+            var user = (from x in UserRepository.GetAll()
+                        where x.Login == login && x.Password == password
+                        select x).FirstOrDefault();
 
-            return result;
+            if(user != null)
+            {
+                _currentUser = user;
+                return true;
+            }
+            
+            return false; 
         }
 
-        public async Task<bool> LoadAllAsync()//доделать
+        public bool TryRegisterUser(string login, string password, string name, string email, string role)
         {
-            bool result = true;
+            password = Convert.ToBase64String(MD5.HashData(Encoding.UTF8.GetBytes(password)));
+            UserEntity user = new(Guid.NewGuid(), login, password, name, email);
 
-            if (!await _testRepository.LoadAsync()) result = false;
-
-            return result;
+            return UserRepository.Add(user);
         }
     }
 }
