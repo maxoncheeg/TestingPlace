@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TestingPlace.Model.Testing.Questions.OrderQuestion">
-    <Position X="8.5" Y="8" Width="1.5" />
+    <Position X="8.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Testing\Questions\OrderQuestion.cs</FileName>
@@ -83,18 +83,21 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TestingPlace.Data.Tests.Json.JsonQuestion">
-    <Position X="21.25" Y="8.25" Width="2.25" />
+    <Position X="21" Y="9.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAA=</HashCode>
       <FileName>Data\Tests\Json\JsonQuestion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingPlace.Data.Tests.Json.JsonTest">
-    <Position X="21.25" Y="6.25" Width="2.5" />
+    <Position X="21" Y="7" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
       <FileName>Data\Tests\Json\JsonTest.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Questions" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="TestingPlace.Data.Tests.Json.JsonTestRepository">
     <Position X="24.5" Y="7" Width="2.25" />
@@ -112,7 +115,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TestingPlace.Data.Tests.QuestionEntity">
-    <Position X="5.25" Y="2" Width="1.75" />
+    <Position X="5.25" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAEAIAAAAAAAAAAAQAACAAAAAA=</HashCode>
       <FileName>Data\Tests\QuestionEntity.cs</FileName>
@@ -122,7 +125,7 @@
   <Class Name="TestingPlace.Data.Tests.TestEntity">
     <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAQAAAAAAQAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>Data\Tests\TestEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

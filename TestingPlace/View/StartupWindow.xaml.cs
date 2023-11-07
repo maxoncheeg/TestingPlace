@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlace.ViewModel;
@@ -10,19 +11,24 @@ namespace TestingPlace.View
     /// </summary>
     public partial class StartupWindow : Window
     {
+        public static RoutedCommand LoginSuccessCommand { get; } = new("OpenMainWindow", typeof(StartupWindow));
+
         public StartupWindow()
         {
             InitializeComponent();
             DataContext = new StartupViewModel();
+
+            CommandBindings.Add(new(LoginSuccessCommand, OpenMainWindow, (s, e) => e.CanExecute = true));
+
             if(DataContext is StartupViewModel viewModel)
             {
-                viewModel.LoginSuccess += OnLoginSuccess;
-                viewModel.LoginError += OnLoginError;
+                viewModel.LoginSuccess += () => LoginSuccessCommand.Execute(this, null);
+                viewModel.LoginError += ShowErrorWindow;
                 viewModel.RegistrationClicked += OnRegistrationClicked;
             }
         }
 
-        private void OnLoginSuccess()
+        private void OpenMainWindow(object? sender, EventArgs args)
         {
             MainWindow window = new(this);
             window.ShowDialog();
@@ -34,7 +40,7 @@ namespace TestingPlace.View
             window.ShowDialog();
         }
 
-        private void OnLoginError(string message)
+        private void ShowErrorWindow(string message)
         {
             MessageBox.Show(message);
         }
