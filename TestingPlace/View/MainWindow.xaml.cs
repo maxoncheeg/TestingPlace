@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TestingPlace.View.UserControls;
 using TestingPlace.ViewModel;
+using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.View
 {
@@ -30,7 +31,17 @@ namespace TestingPlace.View
             InitializeComponent();
             Closed += OnClosed;
 
-            DataContext = new MainViewModel(new MainMenuControl(), new TestListControl());
+            TestListControl control = new();
+            if (control.DataContext is TestListViewModel model)
+                model.TestSessionStarted += OnTestSessionStarted;
+
+            MainViewModel mainViewModel = new(new MainMenuControl(), control);
+            DataContext = mainViewModel;
+        }
+
+        private void OnTestSessionStarted()
+        {
+            new TestSolveWindow(this).ShowDialog();
         }
 
         private void OnClosed(object? sender, EventArgs e)

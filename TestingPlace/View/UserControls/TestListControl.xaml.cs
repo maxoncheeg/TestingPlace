@@ -22,19 +22,11 @@ namespace TestingPlace.View.UserControls
     /// </summary>
     public partial class TestListControl : UserControl
     {
-        public event Action<int> OnSelectItem;
         public TestListControl()
         {
             InitializeComponent();
 
             DataContext = new TestListViewModel();
-
-            
-        }
-
-        private void OnListBoxMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            OnSelectItem?.Invoke(testListBox.SelectedIndex);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

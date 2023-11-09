@@ -5,7 +5,7 @@ using TestingPlace.ViewModel.Commands;
 
 namespace TestingPlace.ViewModel
 {
-    internal class RegistrationViewModel : INotifyPropertyChanged
+    internal class RegistrationViewModel : BaseViewModel
     {
         private string _login = string.Empty;
         private string _name = string.Empty;
@@ -15,15 +15,6 @@ namespace TestingPlace.ViewModel
         private bool _isTeacher = false;
 
         private DataManager _manager;
-
-        private PropertyChangedEventArgs _loginArgs = new(nameof(Login));
-        private PropertyChangedEventArgs _nameArgs = new(nameof(Name));
-        private PropertyChangedEventArgs _passwordArgs = new(nameof(Password));
-        private PropertyChangedEventArgs _passwordRepeatArgs = new(nameof(PasswordRepeat));
-        private PropertyChangedEventArgs _emailArgs = new(nameof(Email));
-        private PropertyChangedEventArgs _isTeacherArgs = new(nameof(IsTeacher));
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public event Action? RegistrationClicked;
         public event Action? LoginSuccess;
@@ -36,7 +27,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _login = value;
-                PropertyChanged?.Invoke(this, _loginArgs);
+                Notify();
             }
         }
 
@@ -46,7 +37,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _name = value;
-                PropertyChanged?.Invoke(this, _nameArgs);
+                Notify();
             }
         }
 
@@ -56,7 +47,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _password = value;
-                PropertyChanged?.Invoke(this, _passwordArgs);
+                Notify();
             }
         }
 
@@ -66,7 +57,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _passwordRepeat = value;
-                PropertyChanged?.Invoke(this, _passwordRepeatArgs);
+                Notify();
             }
         }
 
@@ -76,7 +67,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _email = value;
-                PropertyChanged?.Invoke(this, _emailArgs);
+                Notify();
             }
         }
 
@@ -86,7 +77,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _isTeacher = value;
-                PropertyChanged?.Invoke(this, _isTeacherArgs);
+                Notify();
             }
         }
         #endregion

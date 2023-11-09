@@ -8,9 +8,8 @@ using TestingPlace.ViewModel.Commands;
 
 namespace TestingPlace.ViewModel.UserControls
 {
-    internal class MainMenuViewModel : INotifyPropertyChanged
+    internal class MainMenuViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public event Action TestListButtonClicked;
 

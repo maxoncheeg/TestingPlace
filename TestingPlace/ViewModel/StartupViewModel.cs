@@ -1,24 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
 using TestingPlace.Data;
-using System.Linq;
 using TestingPlace.ViewModel.Commands;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace TestingPlace.ViewModel
 {
-    class StartupViewModel : INotifyPropertyChanged
+    class StartupViewModel : BaseViewModel
     {
         private string _login = string.Empty;
         private string _password = string.Empty;
 
         private DataManager _manager;
-
-        private PropertyChangedEventArgs _loginArgs = new(nameof(Login));
-        private PropertyChangedEventArgs _passwordArgs = new(nameof(Password));
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public event Action? RegistrationClicked;
         public event Action? LoginSuccess;
@@ -31,7 +22,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _login = value;
-                PropertyChanged?.Invoke(this, _loginArgs);
+                Notify();
             }
         }
 
@@ -41,7 +32,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _password = value;
-                PropertyChanged?.Invoke(this, _passwordArgs);
+                Notify();
             }
         }
         #endregion

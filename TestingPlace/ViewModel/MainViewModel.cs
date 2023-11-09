@@ -5,7 +5,7 @@ using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.ViewModel
 {
-    internal class MainViewModel : INotifyPropertyChanged
+    internal class MainViewModel : BaseViewModel
     {
         private UserControl _menuControl;
         private UserControl _testListControl;
@@ -15,12 +15,6 @@ namespace TestingPlace.ViewModel
         private string _login = string.Empty;
         private string _name = string.Empty;
 
-        private PropertyChangedEventArgs _actualControlArgs = new(nameof(ActualControl));
-        private PropertyChangedEventArgs _loginArgs = new(nameof(Login));
-        private PropertyChangedEventArgs _nameArgs = new(nameof(Name));
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         #region Bindings
         public UserControl? ActualControl
         {
@@ -28,7 +22,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _actualControl = value;
-                PropertyChanged?.Invoke(this, _actualControlArgs);
+                Notify();
             }
         }
 
@@ -38,7 +32,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _login = value;
-                PropertyChanged?.Invoke(this, _loginArgs);
+                Notify();
             }
         }
 
@@ -48,7 +42,7 @@ namespace TestingPlace.ViewModel
             set
             {
                 _name = value;
-                PropertyChanged?.Invoke(this, _nameArgs);
+                Notify();
             }
         }
 

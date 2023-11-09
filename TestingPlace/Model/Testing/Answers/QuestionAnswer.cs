@@ -18,8 +18,11 @@ namespace TestingPlace.Model.Testing.Answers
         public static QuestionAnswer Create(Guid id, Guid questionId, string text, double points = 0) =>
             new(id, questionId, text, points);
 
-        public double Check(IQuestionAnswer[] answer) =>
-            answer[0].Equals(this) ? Points : 0;
+        public double Check(IQuestionAnswer[] answer)
+        {
+            if (answer == null || answer.Length > 1) return 0;
+                return answer[0].Equals(this) ? Points : 0;
+        }
 
         public bool Equals(IQuestionAnswer other) =>
             other is QuestionAnswer questionAnswer && questionAnswer.Text == Text;

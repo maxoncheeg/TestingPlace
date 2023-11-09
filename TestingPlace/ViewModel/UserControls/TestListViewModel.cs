@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using TestingPlace.Data;
@@ -12,7 +10,7 @@ using TestingPlace.ViewModel.Commands;
 
 namespace TestingPlace.ViewModel.UserControls
 {
-    internal class TestListViewModel : INotifyPropertyChanged
+    internal class TestListViewModel : BaseViewModel
     {
         private DataManager _manager;
         private bool _isSearching = false;
@@ -24,7 +22,7 @@ namespace TestingPlace.ViewModel.UserControls
         private int _themeIndex = 0;
         private string _search = string.Empty;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public event Action? TestSessionStarted;
 
         #region Bindings
         public ObservableCollection<Test> Tests
@@ -104,8 +102,10 @@ namespace TestingPlace.ViewModel.UserControls
         public Command OpenTest => Command.Create(OpenTestMethod);
         private void OpenTestMethod(object? sender, EventArgs args)
         {
-            MessageBox.Show(_listSelectedIndex.ToString());
-            MessageBox.Show(_themeIndex.ToString());
+            if (_listSelectedIndex < 0 || _tests.Count <= _listSelectedIndex) return;
+
+            if (_manager.StartTestSession(_tests[_listSelectedIndex])) 
+                TestSessionStarted?.Invoke();
         }
         #endregion
 
@@ -158,8 +158,5 @@ namespace TestingPlace.ViewModel.UserControls
                     }
             });
         }
-
-        private void Notify([CallerMemberName] string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new(propertyName));
     }
 }
