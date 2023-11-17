@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using TestingPlace.Data;
 using TestingPlace.Model.Testing.Answers;
@@ -16,7 +17,7 @@ namespace TestingPlace.ViewModel
 {
     internal class TestSolveViewModel : BaseViewModel
     {
-        private ITestSession? _testSession = null;
+        private ITestSession _testSession;
         private UserControl _defaultQuestionControl;
 
         #region Bindings
@@ -37,17 +38,20 @@ namespace TestingPlace.ViewModel
         {
             if(_testSession != null)
             {
-                if (!_testSession.NextQuestion())
-                {
-                    //дальше некуда
-                }
+                //if (!_testSession.NextQuestion())
+                //{
+                //    //дальше некуда
+                //}
 
-                if(_testSession.Test.QuestionCount == _testSession.Answers.Count)
+                if(!_testSession.NextQuestion() || _testSession.Test.QuestionCount == _testSession.Answers.Count)
                 {
+                    double points = 0;
                     foreach (KeyValuePair<int, IQuestionAnswer> pair in _testSession.Answers)
                     {
-                        _testSession.Test[pair.Key].Answer(new QuestionAnswer);
+                        points += _testSession.Test[pair.Key].Answer(pair.Value);
                     }
+
+                    MessageBox.Show($"ВЫ ЗАРАБОТАЛИ {points} ИЗ {_testSession.Test.GetTotalPoints()}");
                 }
 
                 switch (_testSession.Test[_testSession.CurrentQuestionIndex])
@@ -60,14 +64,13 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public TestSolveViewModel(UserControl defaultQuestionControl)
+        public TestSolveViewModel(IDataManager manager, ITestSession session, UserControl defaultQuestionControl)
         {
+            _testSession = session;
             _defaultQuestionControl = defaultQuestionControl;
 
-            if (DataManager.Instance() is DataManager manager && manager.TestSession != null)
+            if (manager.TestSession != null)
             {
-                _testSession = manager.TestSession;
-
                 switch (_testSession.Test[_testSession.CurrentQuestionIndex])
                 {
                     case DefaultQuestion:

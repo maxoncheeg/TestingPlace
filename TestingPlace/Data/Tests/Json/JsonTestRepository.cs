@@ -14,9 +14,9 @@ namespace TestingPlace.Data.Tests.Json
     {
         private readonly string _savePath;
 
-        public JsonTestRepository() 
+        public JsonTestRepository(string savePath) 
         {
-            _savePath = ConfigurationManager.AppSettings["jsonTestPath"] ?? string.Empty;
+            _savePath = savePath;
             if (string.IsNullOrEmpty(_savePath)) 
                 throw new System.Exception("Не задан путь сохранения тестов");
         }

@@ -1,7 +1,11 @@
-﻿using System.Windows;
+﻿using System.Configuration;
+using System.Windows;
 using TestingPlace.Data;
+using TestingPlace.Data.Tests;
 using TestingPlace.Data.Tests.Json;
+using TestingPlace.Data.Users;
 using TestingPlace.Data.Users.Json;
+using TestingPlace.View;
 
 namespace TestingPlace
 {
@@ -10,11 +14,28 @@ namespace TestingPlace
     /// </summary>
     public partial class App : Application
     {
-        public App()
+        private IDataManager _dataManager;
+        private TestRepository _testRepository;
+        private UserRepository _usersRepository;
+
+        public App() : base()
         {
-            DataManager dataManager = 
-                DataManager.Instance(new JsonTestRepository(), new JsonUserRepository());
-            dataManager.LoadAllAsync().Wait();
+            string testsSavePath = ConfigurationManager.AppSettings["jsonTestPath"] ?? string.Empty;
+            string usersSavePath = ConfigurationManager.AppSettings["jsonUserPath"] ?? string.Empty;
+
+            _testRepository = new JsonTestRepository(testsSavePath);
+            _usersRepository = new JsonUserRepository(usersSavePath);
+
+            _dataManager = DataManager.Instance(_testRepository, _usersRepository);
+        }
+
+        protected override async void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            await _dataManager.LoadAllAsync();
+
+            StartupWindow window = new(_dataManager);
+            window.Show();
         }
     }
 }

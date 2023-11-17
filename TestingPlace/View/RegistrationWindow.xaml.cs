@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingPlace.Data;
 using TestingPlace.ViewModel;
 
 namespace TestingPlace.View
@@ -21,13 +22,13 @@ namespace TestingPlace.View
     public partial class RegistrationWindow : Window
     {
         private readonly Window _previousWindow;
-        public RegistrationWindow(Window previousWindow)
+        public RegistrationWindow(Window previousWindow, IDataManager manager)
         {
             _previousWindow = previousWindow;
             _previousWindow.Hide();
 
             InitializeComponent();
-            DataContext = new RegistrationViewModel();
+            DataContext = new RegistrationViewModel(manager);
 
             if (DataContext is RegistrationViewModel registrationViewModel)
             {

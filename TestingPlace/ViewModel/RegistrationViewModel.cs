@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using TestingPlace.Data;
 using TestingPlace.ViewModel.Commands;
 
@@ -14,7 +13,7 @@ namespace TestingPlace.ViewModel
         private string _email = string.Empty;
         private bool _isTeacher = false;
 
-        private DataManager _manager;
+        private IDataManager _manager;
 
         public event Action? RegistrationClicked;
         public event Action? LoginSuccess;
@@ -114,12 +113,9 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public RegistrationViewModel()
+        public RegistrationViewModel(IDataManager manager)
         {
-            if (DataManager.Instance() is DataManager manager && manager != null)
-                _manager = manager;
-            else
-                throw new InvalidOperationException();
+            _manager = manager;
         }
     }
 }

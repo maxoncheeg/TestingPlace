@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TestingPlace.Data.Users
 {
-    class UserEntity : IEntity
+    public class UserEntity : IEntity
     {
         public Guid Id { get; }
         public string Login { get; }

@@ -6,13 +6,14 @@ using System.Windows;
 using TestingPlace.Data;
 using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing;
+using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.ViewModel.Commands;
 
 namespace TestingPlace.ViewModel.UserControls
 {
     internal class TestListViewModel : BaseViewModel
     {
-        private DataManager _manager;
+        private IDataManager _manager;
         private bool _isSearching = false;
 
         private ObservableCollection<Test> _tests = new();
@@ -22,7 +23,7 @@ namespace TestingPlace.ViewModel.UserControls
         private int _themeIndex = 0;
         private string _search = string.Empty;
 
-        public event Action? TestSessionStarted;
+        public event Action<ITestSession>? TestSessionStarted;
 
         #region Bindings
         public ObservableCollection<Test> Tests
@@ -104,17 +105,15 @@ namespace TestingPlace.ViewModel.UserControls
         {
             if (_listSelectedIndex < 0 || _tests.Count <= _listSelectedIndex) return;
 
-            if (_manager.StartTestSession(_tests[_listSelectedIndex])) 
-                TestSessionStarted?.Invoke();
+            ITestSession session = new TestSession(_tests[_listSelectedIndex]);
+            TestSessionStarted?.Invoke(session);
         }
         #endregion
 
-        public TestListViewModel()
+        public TestListViewModel(IDataManager manager)
         {
-            if (DataManager.Instance() is DataManager manager && manager != null)
-                _manager = manager;
-            else
-                throw new InvalidOperationException();
+
+            _manager = manager;
 
             Tests = new(_manager.TestRepository.GetAll());
             ListSelectedIndex = 0;
@@ -135,8 +134,12 @@ namespace TestingPlace.ViewModel.UserControls
             await Task.Run(async () =>
             {
                 if (Search == string.Empty && ThemeIndex == (int)TestTheme.Любая)
+                {
                     Tests = new(_manager.TestRepository.GetAll());
-                else Tests = new();
+                    return;
+                }
+                else
+                    Tests = new();
 
                 if (ThemeIndex == (int)TestTheme.Любая)
                     foreach (var test in _manager.TestRepository.GetAll())

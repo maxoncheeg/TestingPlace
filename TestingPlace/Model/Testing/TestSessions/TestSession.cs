@@ -5,7 +5,7 @@ using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.TestSessions
 {
-    internal class TestSession(Test test) : ITestSession
+    public class TestSession(Test test) : ITestSession
     {
         private Test _test = test;
         private int _currentQuestionIndex = 0;

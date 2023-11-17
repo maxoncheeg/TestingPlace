@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing.Questions;
 
 namespace TestingPlace.Model.Testing
 {
-	internal class Test : TestEntity, IEnumerable
+	public class Test : TestEntity, ITest, IEnumerable
 	{
 		private List<ITestQuestion> _questions = new();
 
@@ -33,6 +34,11 @@ namespace TestingPlace.Model.Testing
         {
 			for (int i = 0; i < QuestionCount; i++)
 				yield return this[i];
+        }
+
+        public double GetTotalPoints()
+        {
+			return _questions.Sum(question => question.GetPoints());
         }
     }
 }

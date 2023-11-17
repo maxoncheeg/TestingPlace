@@ -6,7 +6,7 @@ using TestingPlace.Model.Testing;
 
 namespace TestingPlace.Data.Tests
 {
-    internal abstract class TestRepository : IBaseRepository<Test>
+    public abstract class TestRepository : IBaseRepository<Test>
     {
         protected List<Test> _tests = new();
 

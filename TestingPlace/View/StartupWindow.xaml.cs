@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using TestingPlace.Data;
 using TestingPlace.ViewModel;
 
 namespace TestingPlace.View
@@ -11,12 +12,13 @@ namespace TestingPlace.View
     /// </summary>
     public partial class StartupWindow : Window
     {
+        private IDataManager _dataManager;
         public static RoutedCommand LoginSuccessCommand { get; } = new("OpenMainWindow", typeof(StartupWindow));
 
-        public StartupWindow()
+        public StartupWindow(IDataManager dataManager)
         {
             InitializeComponent();
-            DataContext = new StartupViewModel();
+            DataContext = new StartupViewModel(_dataManager = dataManager);
 
             CommandBindings.Add(new(LoginSuccessCommand, OpenMainWindow, (s, e) => e.CanExecute = true));
 
@@ -30,13 +32,13 @@ namespace TestingPlace.View
 
         private void OpenMainWindow(object? sender, EventArgs args)
         {
-            MainWindow window = new(this);
+            MainWindow window = new(this, _dataManager);
             window.ShowDialog();
         }
 
         private void OnRegistrationClicked()
         {
-            RegistrationWindow window = new(this);
+            RegistrationWindow window = new(this, _dataManager);
             window.ShowDialog();
         }
 

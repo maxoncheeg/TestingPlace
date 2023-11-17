@@ -5,7 +5,7 @@ using TestingPlace.Model.Testing.Answers;
 
 namespace TestingPlace.Model.Testing.TestSessions
 {
-    internal interface ITestSession
+    public interface ITestSession
     {
         public Test Test { get; }
         public int CurrentQuestionIndex { get; }

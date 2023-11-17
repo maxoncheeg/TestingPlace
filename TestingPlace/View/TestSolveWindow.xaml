@@ -49,6 +49,8 @@
             <Button
                 Margin="10,5"
                 Content="Предыдущий"
+                IsEnabled="False"
+                Opacity="0.3"
                 Style="{StaticResource ToggleButonStl}">
                 <Button.Resources>
                     <Style TargetType="Border">

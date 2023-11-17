@@ -2,7 +2,7 @@
 
 namespace TestingPlace.Data
 {
-    interface IEntity
+    public interface IEntity
     {
         public Guid Id { get; }
     }

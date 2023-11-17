@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TestingPlace.Data.Users
 {
-    internal abstract class UserRepository : IBaseRepository<UserEntity>
+    public abstract class UserRepository : IBaseRepository<UserEntity>
     {
         protected List<UserEntity> _users = new();
 

@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 using TestingPlace.Data.Tests;
 using TestingPlace.Data.Users;
 using TestingPlace.Model.Testing;
-using TestingPlace.Model.Testing.Questions;
 using TestingPlace.Model.Testing.TestSessions;
 
 namespace TestingPlace.Data
 {
-    internal class DataManager
+    public class DataManager : IDataManager
     {
-
-        private static DataManager? _manager = null;
-
         private UserEntity? _currentUser = null;
         private ITestSession? _testSession = null;
 
@@ -32,13 +28,10 @@ namespace TestingPlace.Data
         {
             this._testRepository = _testRepository;
             this._userRepository = _userRepository;
-            _manager = this;
         }
 
         public static DataManager Instance(TestRepository testRepository, UserRepository userRepository) 
             => new(testRepository, userRepository);
-
-        public static DataManager? Instance() => _manager;
 
         public async Task SaveAllAsync()
         {

@@ -5,8 +5,8 @@ using TestingPlace.Model.Testing.Answers;
 namespace TestingPlace.Model.Testing.Questions
 {
     public class DefaultQuestion : Question, ITestQuestion
-	{
-        private DefaultQuestion(Guid id, Guid testId, string text, QuestionAnswer answer, List<QuestionAnswer> incorrectAnswers) 
+    {
+        private DefaultQuestion(Guid id, Guid testId, string text, QuestionAnswer answer, List<QuestionAnswer> incorrectAnswers)
             : base(id, testId, answer, text, nameof(DefaultQuestion))
         {
             _answers = new(incorrectAnswers) { _answer as QuestionAnswer };
@@ -21,6 +21,6 @@ namespace TestingPlace.Model.Testing.Questions
 
         public double GetPoints() => (_answer as QuestionAnswer)?.Points ?? 0;
 
-        public double Answer(QuestionAnswer[] answer) => _answer.Check(answer);
+        public double Answer(IQuestionAnswer answer) => _answer.Check(answer);
     }
 }

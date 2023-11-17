@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using TestingPlace.Data;
+using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.View.UserControls.TestQuestions;
 using TestingPlace.ViewModel;
 
@@ -12,7 +14,7 @@ namespace TestingPlace.View
     {
         private Window _previousWindow;
 
-        public TestSolveWindow(Window window)
+        public TestSolveWindow(Window window, IDataManager manager, ITestSession session)
         {
             _previousWindow = window;
 
@@ -21,10 +23,10 @@ namespace TestingPlace.View
             this.Loaded += OnLoaded;
             this.Closed += OnClosed;
 
-            DefaultQuestionControl control = new DefaultQuestionControl();
+            DefaultQuestionControl control = new DefaultQuestionControl(session);
             //остальное
 
-            DataContext = new TestSolveViewModel(control);
+            DataContext = new TestSolveViewModel(manager, session, control);
         }
 
         private void OnClosed(object? sender, EventArgs e)

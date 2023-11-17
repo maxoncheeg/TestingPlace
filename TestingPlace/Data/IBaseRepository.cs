@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace TestingPlace.Data
 {
-    interface IBaseRepository<T> where T : IEntity
+    public interface IBaseRepository<T> where T : IEntity
     {
         public bool Add(T entity);
         public bool Update(T entity);

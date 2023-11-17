@@ -1,5 +1,4 @@
 ﻿using System;
-using TestingPlace.Model.Testing.Questions.QuestionsTypes.PictureQuestions;
 
 namespace TestingPlace.Model.Testing.Questions.QuestionsTypes.TimeQuestions
 {

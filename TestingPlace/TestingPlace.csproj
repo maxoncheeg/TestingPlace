@@ -8,4 +8,11 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ViewModel\Utils\**" />
+    <EmbeddedResource Remove="ViewModel\Utils\**" />
+    <None Remove="ViewModel\Utils\**" />
+    <Page Remove="ViewModel\Utils\**" />
+  </ItemGroup>
+
 </Project>

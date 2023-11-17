@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using TestingPlace.Data;
 using TestingPlace.ViewModel.UserControls;
 
@@ -9,7 +8,7 @@ namespace TestingPlace.ViewModel
     {
         private UserControl _menuControl;
         private UserControl _testListControl;
-        private DataManager? _manager;
+        private IDataManager _manager;
 
         private UserControl? _actualControl = null;
         private string _login = string.Empty;
@@ -57,11 +56,11 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public MainViewModel(UserControl menuControl, UserControl testListControl)
+        public MainViewModel(IDataManager manager, UserControl menuControl, UserControl testListControl)
         {
-            _manager = DataManager.Instance();
+            _manager = manager;
 
-            if (_manager != null && _manager.CurrentUser != null)
+            if (_manager.CurrentUser != null)
             {
                 Login = _manager.CurrentUser.Login;
                 Name = _manager.CurrentUser.Name;

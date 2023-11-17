@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using TestingPlace.Data;
+﻿using System.Collections.ObjectModel;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
 using TestingPlace.Model.Testing.TestSessions;
@@ -42,21 +39,20 @@ namespace TestingPlace.ViewModel.UserControls.TestQuestions
             {
                 _selectedIndex = value;
 
-                if (SelectedIndex != -1 && _testSession != null)            
+                if (SelectedIndex != -1 && _testSession != null)
                     _testSession.Answer(Answers[SelectedIndex]);
-                
+
                 Notify();
             }
         }
 
-        public DefaultQuestionViewModel()
+        public DefaultQuestionViewModel(ITestSession session)
         {
-            if (DataManager.Instance() is DataManager manager && manager.TestSession != null)
-            {
-                _testSession = manager.TestSession;
-                _testSession.QuestionChanged += OnQuestionChanged;
-                OnQuestionChanged(this, new(_testSession.Test[_testSession.CurrentQuestionIndex]));
-            }
+            _testSession = session;
+
+            _testSession.QuestionChanged += OnQuestionChanged;
+            OnQuestionChanged(this, new(_testSession.Test[_testSession.CurrentQuestionIndex]));
+
         }
 
         private void OnQuestionChanged(object? sender, QuestionEventArgs e)

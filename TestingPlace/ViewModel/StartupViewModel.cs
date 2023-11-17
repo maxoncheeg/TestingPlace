@@ -9,7 +9,7 @@ namespace TestingPlace.ViewModel
         private string _login = string.Empty;
         private string _password = string.Empty;
 
-        private DataManager _manager;
+        private IDataManager _manager;
 
         public event Action? RegistrationClicked;
         public event Action? LoginSuccess;
@@ -58,12 +58,9 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public StartupViewModel()
+        public StartupViewModel(IDataManager manager)
         {
-            if (DataManager.Instance() is DataManager manager && manager != null)
-                _manager = manager;
-            else
-                throw new InvalidOperationException();
+            _manager = manager;
         }
     }
 }

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TestingPlace.Data;
+using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.View.UserControls;
 using TestingPlace.ViewModel;
 using TestingPlace.ViewModel.UserControls;
@@ -22,26 +24,29 @@ namespace TestingPlace.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDataManager _dataManager;
         private Window _window;
-        public MainWindow(Window window)
+        public MainWindow(Window window, IDataManager manager)
         {
+            _dataManager = manager;
             _window = window;
             _window.Hide();
 
             InitializeComponent();
             Closed += OnClosed;
 
-            TestListControl control = new();
+            TestListControl control = new(manager);
             if (control.DataContext is TestListViewModel model)
                 model.TestSessionStarted += OnTestSessionStarted;
 
-            MainViewModel mainViewModel = new(new MainMenuControl(), control);
+            MainViewModel mainViewModel = new(_dataManager, new MainMenuControl(), control);
             DataContext = mainViewModel;
         }
 
-        private void OnTestSessionStarted()
+        private void OnTestSessionStarted(ITestSession session)
         {
-            new TestSolveWindow(this).ShowDialog();
+      
+            new TestSolveWindow(this, _dataManager, session).ShowDialog();
         }
 
         private void OnClosed(object? sender, EventArgs e)

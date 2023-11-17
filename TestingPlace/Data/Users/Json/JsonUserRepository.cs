@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,9 +9,9 @@ namespace TestingPlace.Data.Users.Json
     {
         private string _savePath;
 
-        public JsonUserRepository()
+        public JsonUserRepository(string savePath)
         {
-            _savePath = ConfigurationManager.AppSettings["jsonUserPath"] ?? string.Empty;
+            _savePath = savePath;
             if (string.IsNullOrEmpty(_savePath))
                 throw new System.Exception("Не задан путь сохранения тестов");
         }
