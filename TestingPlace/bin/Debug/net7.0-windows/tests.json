@@ -20,7 +20,7 @@
             "Id": "480ddfce-90ef-4b18-b323-3d8e9224d3ef",
             "Text": "i++",
             "ImagePath": null,
-            "Points": 50,
+            "Points": 0.3,
             "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
           },
           {
@@ -59,7 +59,7 @@
             "Id": "9b85e33a-7330-4910-9b20-ecada1fdf4c3",
             "Text": "Денис Савочка (также известен как Denix Payson)",
             "ImagePath": null,
-            "Points": 895,
+            "Points": 0.4,
             "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
           },
           {
@@ -89,28 +89,28 @@
         "Question": {
           "Id": "4d59384c-2494-45fb-ac32-afaeac0a46c8",
           "Type": "DefaultQuestion",
-          "Text": "Охотник за сокровищами нашел две камеры. Известно, что в одной — несметные богатства, а во второй — огнедышащее чудовище. Под дверью с каким номером золото(C++)?",
+          "Text": "Что важнее?",
           "ImagePath": null,
           "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
         },
         "Answers": [
           {
             "Id": "b6e1e797-5365-43c9-b38a-7d8cb5661990",
-            "Text": "int i = 0;   Console.WriteLine(1 - (--i) + 20 - 56 + 35 - Math.Round(Math.Sqrt(234)) + 12 + Math.Sqrt(121) - (int)Math.Pow(3.16227, 2));",
+            "Text": "ЗНАНИЕ ПАЙСОНА",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
           },
           {
             "Id": "480baaca-7eb3-4207-b1da-bd5a2ac3540b",
-            "Text": "List<(int, string)> values = new List<(int, string)>();\n\r\n\r{(2, \" 2и\"),(327, \" 2и\"),(4, \"и2\"),(56, \"привет\"),(123, \"ЖЛиЛЛЛ\"),(2, \"и2\"),(236, \"до свидания\"),(2, \"и245\")};\n\r\n\rConsole.WriteLine(Math.Sqrt((from x in values where x.Item1 * 200 < Math.Pow(x.Item2.LastIndexOf('и'), x.Item1) select x).Count()) - 1);",
+            "Text": "УМЕНИЕ ИНТЕГРИРОВАТЬ",
             "ImagePath": null,
-            "Points": 5000,
+            "Points": 0.3,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
           },
           {
             "Id": "de16c04a-93d5-48ff-b271-d729b65e6b31",
-            "Text": "--(++(++(i)++)--)--",
+            "Text": "ЗНАНИЕ СИ ШАРПА",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
