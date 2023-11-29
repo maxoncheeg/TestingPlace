@@ -1,0 +1,19 @@
+[
+  {
+    "Id": "f3115d11-5f32-4801-b605-9e5e10355237",
+    "Login": "t",
+    "Password": "xMpCOKC5I4INzFCab3WEmw==",
+    "Name": "\u0422\u0435\u0441\u0442\u043E\u0432 \u0422\u0435\u0441\u0442 \u0422\u0435\u0441\u0442\u043E\u0432\u0438\u0447",
+    "Email": "test@test.test",
+    "IsTeacher": true,
+    "Solves": [
+      {
+        "Id": "f081455f-c876-4a52-9f7c-5ac8c8851e7a",
+        "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368",
+        "UserId": "f3115d11-5f32-4801-b605-9e5e10355237",
+        "Attempts": 2,
+        "BestPoints": 5945
+      }
+    ]
+  }
+]

@@ -18,17 +18,26 @@ namespace TestingPlace.Model.Testing.TestSessions
         public IReadOnlyDictionary<int, IQuestionAnswer> Answers => _answers;
 
         public event EventHandler<QuestionEventArgs>? QuestionChanged;
+        public event Action? QuestionAnswered;
+		public event Action? TestCompleted;
 
-        public void Answer(IQuestionAnswer answer)
+		public void Answer(IQuestionAnswer answer)
         {
-            if (!_answers.ContainsKey(CurrentQuestionIndex))
+            if (_answers.ContainsKey(CurrentQuestionIndex))
             {
                 _answers[CurrentQuestionIndex] = answer;
             }
             else _answers.Add(CurrentQuestionIndex, answer);
+
+            QuestionAnswered?.Invoke();
         }
 
-        public bool NextQuestion()
+		public void Complete()
+		{
+            TestCompleted?.Invoke();
+        }
+
+		public bool NextQuestion()
         {
             if (_test.QuestionCount > _currentQuestionIndex + 1)
             {

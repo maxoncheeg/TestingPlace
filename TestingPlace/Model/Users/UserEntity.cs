@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TestingPlace.Model.Testing;
 
-namespace TestingPlace.Data.Users
+namespace TestingPlace.Model.Users
 {
     public class UserEntity : IEntity
     {
@@ -11,8 +12,7 @@ namespace TestingPlace.Data.Users
         public string Name { get; set; }
         public string Email { get; set; }
         public bool IsTeacher { get; set; }
-        public List<Guid> CreatedTestsIds { get; set; } = new();
-        public List<Guid> SolvedTestsIds { get; set; } = new();
+        public List<TestSolveEntity> Solves { get; set; } = new();
 
         public UserEntity(Guid Id, string Login, string Password, string Name, string Email)
         {

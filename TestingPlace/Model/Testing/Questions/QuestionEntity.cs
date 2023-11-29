@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestingPlace.Data.Tests
+namespace TestingPlace.Model.Testing.Questions
 {
     public class QuestionEntity : IEntity
     {
@@ -8,7 +8,7 @@ namespace TestingPlace.Data.Tests
         public string Type { get; } = string.Empty;
         public string Text { get; } = string.Empty;
         public string? ImagePath { get; set; }
-        public Guid TestId { get; } 
+        public Guid TestId { get; }
 
         public QuestionEntity(Guid id, string type, string text, Guid testId)
         {

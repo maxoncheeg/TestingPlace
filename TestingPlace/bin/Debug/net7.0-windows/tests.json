@@ -1,0 +1,122 @@
+[
+  {
+    "Test": {
+      "Id": "5ee362bf-29d4-4a2e-878d-c87fef934368",
+      "Name": "ТЕСТ НА ПРОГРАММИСТА",
+      "Theme": 5,
+      "AuthorId": "f3115d11-5f32-4801-b605-9e5e10355237"
+    },
+    "Questions": [
+      {
+        "Question": {
+          "Id": "bb41791a-46ca-48c5-88cc-89bc34ca8d15",
+          "Type": "DefaultQuestion",
+          "Text": "ПОСТФИКСНЫЙ ИНКРЕМЕНТ",
+          "ImagePath": null,
+          "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
+        },
+        "Answers": [
+          {
+            "Id": "480ddfce-90ef-4b18-b323-3d8e9224d3ef",
+            "Text": "i++",
+            "ImagePath": null,
+            "Points": 50,
+            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
+          },
+          {
+            "Id": "27a84354-dc06-4b30-a4ac-cec99e225b8e",
+            "Text": "--i",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
+          },
+          {
+            "Id": "a2be62df-d57c-408e-9fe6-ad4f9c5b20bb",
+            "Text": "++i",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
+          },
+          {
+            "Id": "a2be62df-d57c-408e-9fe6-ad4f9c5b28bb",
+            "Text": "i--",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
+          }
+        ]
+      },
+      {
+        "Question": {
+          "Id": "68d8c3ec-9536-4262-bc26-52ba0df6ec21",
+          "Type": "DefaultQuestion",
+          "Text": "Кто лучший разработчик на языке программирования ПАЙСОН?",
+          "ImagePath": null,
+          "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
+        },
+        "Answers": [
+          {
+            "Id": "9b85e33a-7330-4910-9b20-ecada1fdf4c3",
+            "Text": "Денис Савочка (также известен как Denix Payson)",
+            "ImagePath": null,
+            "Points": 895,
+            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
+          },
+          {
+            "Id": "31d87455-2a2d-42a0-ba84-acb83f2dbf43",
+            "Text": "Лауферман",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
+          },
+          {
+            "Id": "a7b7b885-ee0b-4217-bcba-8de05f07805d",
+            "Text": "Серджио Скорых",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
+          },
+          {
+            "Id": "a7b7b885-ee0b-4217-bcba-8de05f07405d",
+            "Text": "Максонелло Джордан (также известный как Payson Enjoyer)",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
+          }
+        ]
+      },
+      {
+        "Question": {
+          "Id": "4d59384c-2494-45fb-ac32-afaeac0a46c8",
+          "Type": "DefaultQuestion",
+          "Text": "Охотник за сокровищами нашел две камеры. Известно, что в одной — несметные богатства, а во второй — огнедышащее чудовище. Под дверью с каким номером золото(C++)?",
+          "ImagePath": null,
+          "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
+        },
+        "Answers": [
+          {
+            "Id": "b6e1e797-5365-43c9-b38a-7d8cb5661990",
+            "Text": "int i = 0;   Console.WriteLine(1 - (--i) + 20 - 56 + 35 - Math.Round(Math.Sqrt(234)) + 12 + Math.Sqrt(121) - (int)Math.Pow(3.16227, 2));",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
+          },
+          {
+            "Id": "480baaca-7eb3-4207-b1da-bd5a2ac3540b",
+            "Text": "List<(int, string)> values = new List<(int, string)>();\n\r\n\r{(2, \" 2и\"),(327, \" 2и\"),(4, \"и2\"),(56, \"привет\"),(123, \"ЖЛиЛЛЛ\"),(2, \"и2\"),(236, \"до свидания\"),(2, \"и245\")};\n\r\n\rConsole.WriteLine(Math.Sqrt((from x in values where x.Item1 * 200 < Math.Pow(x.Item2.LastIndexOf('и'), x.Item1) select x).Count()) - 1);",
+            "ImagePath": null,
+            "Points": 5000,
+            "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
+          },
+          {
+            "Id": "de16c04a-93d5-48ff-b271-d729b65e6b31",
+            "Text": "--(++(++(i)++)--)--",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
+          }
+        ]
+      }
+    ]
+  }
+]

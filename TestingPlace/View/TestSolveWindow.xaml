@@ -9,48 +9,62 @@
     Width="800"
     Height="600"
     WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.4*" />
             <RowDefinition Height="5*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Row="0" Margin="20,2">
-            <!--  Content="{Binding TestQuestion}"  -->
-            <TextBlock
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                FontFamily="Cascadia Code"
-                FontSize="36"
-                FontWeight="Bold"
-                Text="Как стать программистом?">
-                <TextBlock.Foreground>
-                    <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
-                        <LinearGradientBrush.RelativeTransform>
-                            <TransformGroup>
-                                <ScaleTransform CenterX="0.5" CenterY="0.5" />
-                                <SkewTransform CenterX="0.5" CenterY="0.5" />
-                                <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5" />
-                                <TranslateTransform />
-                            </TransformGroup>
-                        </LinearGradientBrush.RelativeTransform>
-                        <GradientStop Offset="0" Color="#FF936FE5" />
-                        <GradientStop Offset="1" Color="#FFE390CF" />
-                    </LinearGradientBrush>
-                </TextBlock.Foreground>
-            </TextBlock>
-        </Viewbox>
+        <UniformGrid Rows="1">
+            <Viewbox
+                Grid.Row="0"
+                Margin="20,2"
+                HorizontalAlignment="Left">
+                <!--  Content="{Binding TestQuestion}"  -->
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontFamily="Cascadia Code"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Text="Как стать программистом?">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                    <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                    <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5" />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Offset="0" Color="#FF936FE5" />
+                            <GradientStop Offset="1" Color="#FFE390CF" />
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </Viewbox>
+            <Button Command="{Binding CompleteTest}" Style="{StaticResource ToggleButonStl}">
+                Завершить тестирование
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,0,0,20" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </UniformGrid>
 
         <UserControl Grid.Row="1" Content="{Binding ActualControl}" />
 
         <UniformGrid Grid.Row="2" Rows="1">
             <Button
                 Margin="10,5"
+                Command="{Binding GetPreviousQuestion}"
                 Content="Предыдущий"
-                IsEnabled="False"
-                Opacity="0.3"
+                IsEnabled="{Binding IsPrevCommandEnabled}"
                 Style="{StaticResource ToggleButonStl}">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -59,15 +73,59 @@
                 </Button.Resources>
             </Button>
 
-            <StackPanel>
-                <TextBlock>2 вопрос</TextBlock>
-                <TextBlock>Отвечено на 1 вопрос из 20</TextBlock>
-            </StackPanel>
+            <UniformGrid Rows="2">
+                <DockPanel>
+                    <Label
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="вопрос"
+                        DockPanel.Dock="Right"
+                        FontSize="20"
+                        Style="{StaticResource MunselUltraVioletLabel}" />
+                    <Viewbox>
+                        <Label
+                            Content="{Binding QuestionNumber}"
+                            FontStyle="Oblique"
+                            FontWeight="Bold"
+                            Style="{StaticResource MunselUltraVioletLabel}" />
+                    </Viewbox>
+                </DockPanel>
+
+                <DockPanel LastChildFill="True">
+                    <Label
+                        HorizontalAlignment="Left"
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource MunselUltraVioletLabel}">
+                        Ответы даны
+                    </Label>
+                    <UniformGrid Rows="1">
+                        <Viewbox>
+                            <Label Content="на" Style="{StaticResource MunselUltraVioletLabel}" />
+                        </Viewbox>
+                        <Viewbox>
+                            <Label
+                                Content="{Binding AnsweredQuestionCount}"
+                                FontWeight="Bold"
+                                Style="{StaticResource MunselUltraVioletLabel}" />
+                        </Viewbox>
+                        <Viewbox>
+                            <Label Content="из" Style="{StaticResource MunselUltraVioletLabel}" />
+                        </Viewbox>
+                        <Viewbox>
+                            <Label
+                                Content="{Binding QuestionCount}"
+                                FontWeight="Bold"
+                                Style="{StaticResource MunselUltraVioletLabel}" />
+                        </Viewbox>
+                    </UniformGrid>
+                </DockPanel>
+            </UniformGrid>
 
             <Button
                 Margin="10,5"
                 Command="{Binding GetNextQuestion}"
                 Content="Следующий"
+                IsEnabled="{Binding IsNextCommandEnabled}"
                 Style="{StaticResource ToggleButonStl}">
                 <Button.Resources>
                     <Style TargetType="Border">

@@ -1,11 +1,11 @@
 ﻿using System.Configuration;
 using System.Windows;
-using TestingPlace.Data;
 using TestingPlace.Data.Tests;
 using TestingPlace.Data.Tests.Json;
 using TestingPlace.Data.Users;
 using TestingPlace.Data.Users.Json;
 using TestingPlace.View;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace
 {

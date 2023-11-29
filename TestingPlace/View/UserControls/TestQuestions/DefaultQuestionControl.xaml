@@ -8,36 +8,70 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="10*" />
-        </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Title}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.5*" />
+        </Grid.ColumnDefinitions>
+        <DockPanel Background="AliceBlue" LastChildFill="True">
+            <Label
+                VerticalAlignment="Center"
+                DockPanel.Dock="Top"
+                FontFamily="Cascadia Code"
+                FontSize="20"
+                Foreground="{StaticResource UltraViolet}">
+                Вопрос:
+            </Label>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                FontFamily="Cascadia Code"
+                FontSize="20"
+                Text="{Binding Title}"
+                TextWrapping="Wrap">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                        <GradientStop Offset="0.4" Color="{DynamicResource ColorAwesome}" />
+                        <GradientStop Offset="1" Color="{DynamicResource ColorAmanzing}" />
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+        </DockPanel>
         <ListBox
             x:Name="testListBox"
             Grid.Row="1"
+            Grid.Column="2"
             Margin="20"
             HorizontalContentAlignment="Stretch"
             Background="Transparent"
             BorderBrush="Transparent"
+            ItemContainerStyle="{StaticResource SelectionList}"
             ItemsSource="{Binding Answers, Mode=OneWay}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Hidden"
             SelectedIndex="{Binding SelectedIndex}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel LastChildFill="True">
-                        <DockPanel.Background>
-                            <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
-                                <GradientStop Offset="0.4" Color="Transparent" />
-                                <GradientStop Offset="1" Color="{DynamicResource ColorUltraViolet}" />
-                            </LinearGradientBrush>
-                        </DockPanel.Background>
+                    <Grid Margin="3,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="0.5*" />
+                        </Grid.ColumnDefinitions>
                         <TextBlock
+                            Grid.Column="0"
                             Margin="10"
+                            Padding="5,5,50,5"
                             FontFamily="Cascadia Mono"
-                            FontSize="20"
-                            Text="{Binding Path=Text}" />
-                    </DockPanel>
+                            FontSize="18"
+                            Text="{Binding Path=Text}"
+                            TextWrapping="Wrap">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                                    <GradientStop Offset="0" Color="{DynamicResource ColorMunsell}" />
+                                    <GradientStop Offset="1" Color="{DynamicResource ColorUltraViolet}" />
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

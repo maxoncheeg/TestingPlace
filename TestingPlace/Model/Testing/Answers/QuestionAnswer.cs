@@ -1,5 +1,4 @@
 ﻿using System;
-using TestingPlace.Data.Tests;
 
 namespace TestingPlace.Model.Testing.Answers
 {
@@ -20,8 +19,8 @@ namespace TestingPlace.Model.Testing.Answers
 
         public double Check(IQuestionAnswer answer)
         {
-            if (answer is QuestionAnswer questionAnswer && questionAnswer != null)
-                return answer.Equals(this) ? Points : 0;
+            if (answer != null)
+                return this.Equals(answer) ? Points : 0;
             return 0;
         }
 

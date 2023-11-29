@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestingPlace.Data;
 using TestingPlace.Model.Testing;
+using TestingPlace.ViewModel.Managers;
 using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.View.UserControls

@@ -1,6 +1,6 @@
 ﻿using System;
-using TestingPlace.Data;
 using TestingPlace.ViewModel.Commands;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.ViewModel
 {

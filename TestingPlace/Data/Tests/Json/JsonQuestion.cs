@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using TestingPlace.Model.Testing.Answers;
+using TestingPlace.Model.Testing.Questions;
 
 namespace TestingPlace.Data.Tests.Json
 {

@@ -13,9 +13,12 @@ namespace TestingPlace.Model.Testing.TestSessions
         public ObservableCollection<int> CurrentSelectedAnswerIndexes { get; set; }
 
         public event EventHandler<QuestionEventArgs> QuestionChanged;
+        public event Action QuestionAnswered;
+        public event Action TestCompleted;
 
         public bool NextQuestion();
         public bool PreviousQuestion();
         public void Answer(IQuestionAnswer answer);
+        public void Complete();
     }
 }

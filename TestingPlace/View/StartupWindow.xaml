@@ -1,192 +1,239 @@
-﻿<Window x:Class="TestingPlace.View.StartupWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestingPlace.View"
-        mc:Ignorable="d"
-        Title="StartupWindow" Height="480" Width="600"
-        AllowsTransparency="True"
-        WindowStyle="None"
-        Background="Transparent" 
-        WindowStartupLocation="CenterScreen"
-        >
+﻿<Window
+    x:Class="TestingPlace.View.StartupWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TestingPlace.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="StartupWindow"
+    Width="600"
+    Height="480"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Window.Resources>
-        <ResourceDictionary Source="/TestingPlace;component/VisualStyles/TestingColors.xaml"/>
+        <ResourceDictionary Source="/TestingPlace;component/VisualStyles/TestingColors.xaml" />
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="3.5*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3.5*" />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="6*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition />
+            <RowDefinition Height="6*" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1" Grid.RowSpan="2">
+        <Grid Grid.RowSpan="2" Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="0.3*" />
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="40,10,90,0"
-                    Background="{StaticResource Periwinkle}" Opacity="0.3"
-                    CornerRadius="10"
-                    MouseDown="Border_MouseDown"/>
+            <Border
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="40,10,90,0"
+                Background="{StaticResource Periwinkle}"
+                CornerRadius="10"
+                MouseDown="Border_MouseDown"
+                Opacity="0.3" />
 
-            <Grid Grid.Column="1" Grid.Row="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="0.3*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Margin="0,10,0,0" Grid.Column="5" CornerRadius="10">
+                <Border
+                    Grid.Column="5"
+                    Margin="0,10,0,0"
+                    CornerRadius="10">
                     <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="0.283"/>
-                            <GradientStop Color="#FFEE6D6D" Offset="0"/>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Offset="0.283" Color="{DynamicResource ColorPeriwinkle}" />
+                            <GradientStop Offset="0" Color="#FFEE6D6D" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <DockPanel>
-                        <Button Opacity="0" Click="CloseWindow" VerticalContentAlignment="Center" Content="x" Foreground="White"></Button>
+                        <Button
+                            VerticalContentAlignment="Center"
+                            Click="CloseWindow"
+                            Content="x"
+                            Foreground="White"
+                            Opacity="0" />
                     </DockPanel>
                 </Border>
-                
-                <Border Margin="0,10,0,0" Grid.Column="3" CornerRadius="10">
+
+                <Border
+                    Grid.Column="3"
+                    Margin="0,10,0,0"
+                    CornerRadius="10">
                     <Border.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF786BF0"/>
-                            <GradientStop Color="{DynamicResource ColorPeriwinkle}" Offset="0.213"/>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FF786BF0" />
+                            <GradientStop Offset="0.213" Color="{DynamicResource ColorPeriwinkle}" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <DockPanel>
-                        <Button Opacity="0" Click="MinimizeWindow" VerticalContentAlignment="Center" Content="x" Foreground="White"></Button>
+                        <Button
+                            VerticalContentAlignment="Center"
+                            Click="MinimizeWindow"
+                            Content="x"
+                            Foreground="White"
+                            Opacity="0" />
                     </DockPanel>
                 </Border>
 
             </Grid>
         </Grid>
 
-        <DockPanel Grid.Column="1" Grid.Row="1">
-            <Border BorderBrush="AliceBlue" BorderThickness="0" CornerRadius="30" Background="AliceBlue">
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Border
+                Background="AliceBlue"
+                BorderBrush="AliceBlue"
+                BorderThickness="0"
+                CornerRadius="30">
                 <Border.Effect>
                     <DropShadowEffect
-                        BlurRadius="40" 
-                        ShadowDepth="0" 
+                        BlurRadius="40"
                         Opacity="0.8"
-                        Color="#C3BEF0"/>
+                        ShadowDepth="0"
+                        Color="#C3BEF0" />
                 </Border.Effect>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="9*"/>
-                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="9*" />
+                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="9*"/>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="9*" />
+                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.8*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="0.2*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="0.3*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="0.8*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="0.3*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="0.4*" />
                         </Grid.RowDefinitions>
 
                         <DockPanel>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="36" FontWeight="Bold">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                FontFamily="Cascadia Code"
+                                FontSize="36"
+                                FontWeight="Bold">
                                 <TextBlock.Foreground>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad" MappingMode="RelativeToBoundingBox">
+                                    <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
                                         <LinearGradientBrush.RelativeTransform>
                                             <TransformGroup>
-                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                <SkewTransform CenterX="0.5" CenterY="0.5"/>
-                                                <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5"/>
-                                                <TranslateTransform/>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                                <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                                <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5" />
+                                                <TranslateTransform />
                                             </TransformGroup>
                                         </LinearGradientBrush.RelativeTransform>
-                                        <GradientStop Color="#FF936FE5" Offset="0"/>
-                                        <GradientStop Color="#FFE390CF" Offset="1"/>
+                                        <GradientStop Offset="0" Color="#FF936FE5" />
+                                        <GradientStop Offset="1" Color="#FFE390CF" />
                                     </LinearGradientBrush>
                                 </TextBlock.Foreground>
-                                    TestingPlace</TextBlock>
+                                TestingPlace
+                            </TextBlock>
                         </DockPanel>
 
-                        <DockPanel LastChildFill="True"
-                            Grid.Row="1">
-                            <Label  HorizontalAlignment="Center" DockPanel.Dock="Top" Content="ЛОГИН" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="16">
+                        <DockPanel Grid.Row="1" LastChildFill="True">
+                            <Label
+                                HorizontalAlignment="Center"
+                                Content="ЛОГИН"
+                                DockPanel.Dock="Top"
+                                FontFamily="Cascadia Mono"
+                                FontSize="16"
+                                FontWeight="Bold">
                                 <Label.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}" />
                                 </Label.Foreground>
                             </Label>
-                            <TextBox 
-                                Text="{Binding Login}"
+                            <TextBox
                                 HorizontalContentAlignment="Center"
                                 VerticalContentAlignment="Center"
-                                FontFamily="Cascadia Code" FontSize="22">
+                                FontFamily="Cascadia Code"
+                                FontSize="22"
+                                Text="{Binding Login}">
                                 <TextBox.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}" />
                                 </TextBox.Foreground>
                             </TextBox>
                         </DockPanel>
 
-                        <DockPanel LastChildFill="True"
-                            Grid.Row="3">
-                            <Label 
-                                HorizontalAlignment="Center" DockPanel.Dock="Top" Content="ПАРОЛЬ" FontFamily="Cascadia Mono" FontWeight="Bold" FontSize="16">
+                        <DockPanel Grid.Row="3" LastChildFill="True">
+                            <Label
+                                HorizontalAlignment="Center"
+                                Content="ПАРОЛЬ"
+                                DockPanel.Dock="Top"
+                                FontFamily="Cascadia Mono"
+                                FontSize="16"
+                                FontWeight="Bold">
                                 <Label.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}" />
                                 </Label.Foreground>
                             </Label>
                             <PasswordBox
-                                HorizontalContentAlignment ="Center"
-                                VerticalContentAlignment="Center" DockPanel.Dock="Top"
-                                PasswordChanged="PasswordChanged"
-                                FontFamily="Cascadia Code" FontSize="22">
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                DockPanel.Dock="Top"
+                                FontFamily="Cascadia Code"
+                                FontSize="22"
+                                PasswordChanged="PasswordChanged">
                                 <PasswordBox.Foreground>
-                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}"/>
+                                    <SolidColorBrush Color="{DynamicResource ColorUltraViolet}" />
                                 </PasswordBox.Foreground>
                             </PasswordBox>
                         </DockPanel>
 
                         <Button
-                            Command="{Binding StartTest}"                           
-                            Margin="0,3,0,0"
                             Grid.Row="5"
-                            Style="{StaticResource ToggleButonStl}"
-                            Content="Начать тестирование">
+                            Margin="0,3,0,0"
+                            Command="{Binding StartTest}"
+                            Content="Начать тестирование"
+                            Style="{StaticResource ToggleButonStl}">
                             <Button.Resources>
                                 <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="35"/>
+                                    <Setter Property="CornerRadius" Value="35" />
                                 </Style>
                             </Button.Resources>
                         </Button>
 
-                        <TextBlock Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock
+                            Grid.Row="6"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
                             <Hyperlink Command="{Binding Register}" Foreground="{StaticResource SpaceCadet}">...или зарегистрироваться</Hyperlink>
                         </TextBlock>
                     </Grid>

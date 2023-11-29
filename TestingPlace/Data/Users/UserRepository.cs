@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TestingPlace.Model.Users;
 
 namespace TestingPlace.Data.Users
 {

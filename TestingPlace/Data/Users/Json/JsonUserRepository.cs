@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TestingPlace.Model.Users;
 
 namespace TestingPlace.Data.Users.Json
 {

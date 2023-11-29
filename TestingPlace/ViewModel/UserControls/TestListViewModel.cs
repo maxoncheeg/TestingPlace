@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
-using TestingPlace.Data;
-using TestingPlace.Data.Tests;
 using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.ViewModel.Commands;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.ViewModel.UserControls
 {

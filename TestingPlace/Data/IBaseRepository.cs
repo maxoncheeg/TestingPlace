@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TestingPlace.Model;
 
 namespace TestingPlace.Data
 {

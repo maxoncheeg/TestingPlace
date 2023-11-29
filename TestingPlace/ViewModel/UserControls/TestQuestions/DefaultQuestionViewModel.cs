@@ -8,7 +8,7 @@ namespace TestingPlace.ViewModel.UserControls.TestQuestions
     internal class DefaultQuestionViewModel : BaseViewModel
     {
         private int _selectedIndex = -1;
-        private ITestSession? _testSession;
+        private ITestSession _testSession;
         private ObservableCollection<QuestionAnswer> _answers = new();
         private string _title = string.Empty;
 
@@ -52,15 +52,17 @@ namespace TestingPlace.ViewModel.UserControls.TestQuestions
 
             _testSession.QuestionChanged += OnQuestionChanged;
             OnQuestionChanged(this, new(_testSession.Test[_testSession.CurrentQuestionIndex]));
-
         }
 
         private void OnQuestionChanged(object? sender, QuestionEventArgs e)
         {
             if (e.Question is DefaultQuestion question)
             {
-                SelectedIndex = -1;
                 Answers = new(question.Answers);
+                if (_testSession.Answers.ContainsKey(_testSession.CurrentQuestionIndex) && _testSession.Answers[_testSession.CurrentQuestionIndex] is QuestionAnswer answer)
+                    SelectedIndex = Answers.IndexOf(answer);
+                else SelectedIndex = -1;
+
                 Title = question.Text;
             }
         }

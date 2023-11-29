@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using TestingPlace.Data;
+using TestingPlace.View.MessageBoxes;
 using TestingPlace.ViewModel;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.View
 {
@@ -41,13 +33,13 @@ namespace TestingPlace.View
 
         private void OnSuccess()
         {
-            MessageBox.Show("Вы зареганы!!!!");
+            MessageBoxWindow.ShowMessage("Успех", "Вы зарегистрированы.");
             Close();
         }
 
-        private void OnError(string obj)
+        private void OnError(string message)
         {
-            MessageBox.Show(obj);
+            MessageBoxWindow.ShowMessage("Ошибка", "message");
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

@@ -2,8 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using TestingPlace.Data;
+using TestingPlace.View.MessageBoxes;
 using TestingPlace.ViewModel;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.View
 {
@@ -44,7 +45,8 @@ namespace TestingPlace.View
 
         private void ShowErrorWindow(string message)
         {
-            MessageBox.Show(message);
+            //MessageBox.Show(message);
+            MessageBoxWindow.ShowMessage("Ошибка", message);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

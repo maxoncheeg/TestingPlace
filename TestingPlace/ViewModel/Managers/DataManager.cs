@@ -5,22 +5,20 @@ using System;
 using System.Threading.Tasks;
 using TestingPlace.Data.Tests;
 using TestingPlace.Data.Users;
-using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.TestSessions;
+using TestingPlace.Model.Users;
 
-namespace TestingPlace.Data
+namespace TestingPlace.ViewModel.Managers
 {
     public class DataManager : IDataManager
     {
         private UserEntity? _currentUser = null;
-        private ITestSession? _testSession = null;
 
         private readonly TestRepository _testRepository;
         private readonly UserRepository _userRepository;
 
         public TestRepository TestRepository => _testRepository;
         public UserRepository UserRepository => _userRepository;
-        public ITestSession? TestSession => _testSession;
 
         public UserEntity? CurrentUser => _currentUser;
 
@@ -30,7 +28,7 @@ namespace TestingPlace.Data
             this._userRepository = _userRepository;
         }
 
-        public static DataManager Instance(TestRepository testRepository, UserRepository userRepository) 
+        public static DataManager Instance(TestRepository testRepository, UserRepository userRepository)
             => new(testRepository, userRepository);
 
         public async Task SaveAllAsync()
@@ -53,13 +51,13 @@ namespace TestingPlace.Data
                         where x.Login == login && x.Password == password
                         select x).FirstOrDefault();
 
-            if(user != null)
+            if (user != null)
             {
                 _currentUser = user;
                 return true;
             }
-            
-            return false; 
+
+            return false;
         }
 
         public bool TryRegisterUser(string login, string password, string name, string email, string role)
@@ -68,13 +66,6 @@ namespace TestingPlace.Data
             UserEntity user = new(Guid.NewGuid(), login, password, name, email);
 
             return UserRepository.Add(user);
-        }
-
-        public bool StartTestSession(Test test)
-        {
-            _testSession = new TestSession(test);
-            //_testSession.CurrentQuestionIndex = 2;
-            return true;
         }
     }
 }

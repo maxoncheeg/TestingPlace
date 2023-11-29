@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using TestingPlace.Data;
+using TestingPlace.ViewModel.Managers;
 using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.ViewModel
@@ -49,8 +49,7 @@ namespace TestingPlace.ViewModel
         {
             get 
             {
-                if (_manager != null && _manager.CurrentUser != null)
-                    return _manager.CurrentUser.SolvedTestsIds.Count.ToString();
+                //доделать
                 return "0";
             }
         }

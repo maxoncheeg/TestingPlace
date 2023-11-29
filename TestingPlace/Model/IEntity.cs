@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestingPlace.Data
+namespace TestingPlace.Model
 {
     public interface IEntity
     {

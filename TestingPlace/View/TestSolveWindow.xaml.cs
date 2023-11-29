@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows;
-using TestingPlace.Data;
 using TestingPlace.Model.Testing.TestSessions;
+using TestingPlace.View.MessageBoxes;
 using TestingPlace.View.UserControls.TestQuestions;
 using TestingPlace.ViewModel;
+using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.View
 {
@@ -24,9 +25,17 @@ namespace TestingPlace.View
             this.Closed += OnClosed;
 
             DefaultQuestionControl control = new DefaultQuestionControl(session);
-            //остальное
 
-            DataContext = new TestSolveViewModel(manager, session, control);
+            TestSolveViewModel context = new TestSolveViewModel(manager, session, control);
+            DataContext = context;
+
+            context.OnMessage += OnMessage;
+            session.TestCompleted += () => this.Close();
+        }
+
+        private void OnMessage(string title, string message)
+        {
+            MessageBoxWindow.ShowMessage(title, message);
         }
 
         private void OnClosed(object? sender, EventArgs e)
