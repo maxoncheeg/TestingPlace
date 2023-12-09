@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using TestingPlace.Model.Testing.TestSessions;
+using TestingPlace.ViewModel.TestSessions;
 using TestingPlace.ViewModel.UserControls.TestQuestions;
 
 namespace TestingPlace.View.UserControls.TestQuestions
@@ -11,9 +11,8 @@ namespace TestingPlace.View.UserControls.TestQuestions
     {
         public DefaultQuestionControl(ITestSession session)
         {
-            InitializeComponent();
-
             DataContext = new DefaultQuestionViewModel(session);
+            InitializeComponent();
         }
     }
 }

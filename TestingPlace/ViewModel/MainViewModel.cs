@@ -1,4 +1,8 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using TestingPlace.Model.Testing;
 using TestingPlace.ViewModel.Managers;
 using TestingPlace.ViewModel.UserControls;
 
@@ -13,6 +17,9 @@ namespace TestingPlace.ViewModel
         private UserControl? _actualControl = null;
         private string _login = string.Empty;
         private string _name = string.Empty;
+
+        private double _averageTestPercent;
+        private double _pointsAmount;
 
         #region Bindings
         public UserControl? ActualControl
@@ -47,11 +54,18 @@ namespace TestingPlace.ViewModel
 
         public string SolvedTests
         {
-            get 
-            {
-                //доделать
-                return "0";
-            }
+            get => (_manager.CurrentUser?.Solves.Count ?? 0).ToString();
+
+        }
+
+        public string AverageTestPercent
+        {
+            get => $"{_averageTestPercent * 100}%";
+        }
+
+        public double PointsAmount
+        {
+            get => _pointsAmount;
         }
         #endregion
 
@@ -70,15 +84,49 @@ namespace TestingPlace.ViewModel
 
             ActualControl = _menuControl;
 
-            if(_menuControl.DataContext is MainMenuViewModel model)
+            if (_menuControl.DataContext is MainMenuViewModel model)
             {
                 model.TestListButtonClicked += OnTestListButtonClicked;
             }
         }
 
+        public async Task UpdateInfo()
+        {
+            double avg = await CalculateAverageTestPercent();
+            _averageTestPercent = avg == double.NaN ? 0 : avg;
+            Notify(nameof(AverageTestPercent));
+
+            _pointsAmount = 0;
+            await Task.Run(() => _pointsAmount = _manager.CurrentUser?.Solves.Sum(s => s.BestPoints) ?? 0);
+            Notify(nameof(PointsAmount));
+        }
+
         private void OnTestListButtonClicked()
         {
             ActualControl = _testListControl;
+        }
+
+        private async Task<double> CalculateAverageTestPercent()
+        {
+            if (_manager.CurrentUser == null) return 0;
+
+            double sum = 0;
+            int counter = 0;
+
+            await Task.Run(() =>
+            {
+                foreach (var test in _manager.CurrentUser.Solves)
+                    if (_manager.TestRepository.GetBy(x => x.Id == test.TestId).FirstOrDefault() is Test foundTest && foundTest != null)
+                    {
+                        counter++;
+                        sum += test.BestPoints / foundTest.GetTotalPoints();
+                    }
+            });
+
+            double avg = sum / counter;
+            if (avg > 1) avg = 1;
+
+            return Math.Round(avg, 2);
         }
     }
 }

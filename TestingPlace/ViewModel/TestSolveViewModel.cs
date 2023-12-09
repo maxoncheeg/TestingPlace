@@ -5,9 +5,9 @@ using System.Windows.Controls;
 using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
-using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.ViewModel.Commands;
 using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel
 {
@@ -79,7 +79,7 @@ namespace TestingPlace.ViewModel
                         ActualControl = _defaultQuestionControl;
                         break;
                 }
-
+                 
                 Notify(nameof(QuestionNumber));
                 Notify(nameof(AnsweredQuestionCount));
             }

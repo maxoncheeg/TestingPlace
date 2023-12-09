@@ -2,7 +2,7 @@
 
 namespace TestingPlace.Model.Testing.Questions
 {
-    public class QuestionEntity : IEntity
+    public class QuestionEntity : IEntity, IQuestion
     {
         public Guid Id { get; }
         public string Type { get; } = string.Empty;

@@ -2,7 +2,7 @@
   {
     "Test": {
       "Id": "5ee362bf-29d4-4a2e-878d-c87fef934368",
-      "Name": "ТЕСТ НА ПРОГРАММИСТА",
+      "Name": "\u0422\u0415\u0421\u0422 \u041D\u0410 \u041F\u0420\u041E\u0413\u0420\u0410\u041C\u041C\u0418\u0421\u0422\u0410",
       "Theme": 5,
       "AuthorId": "f3115d11-5f32-4801-b605-9e5e10355237"
     },
@@ -11,18 +11,11 @@
         "Question": {
           "Id": "bb41791a-46ca-48c5-88cc-89bc34ca8d15",
           "Type": "DefaultQuestion",
-          "Text": "ПОСТФИКСНЫЙ ИНКРЕМЕНТ",
+          "Text": "\u041F\u041E\u0421\u0422\u0424\u0418\u041A\u0421\u041D\u042B\u0419 \u0418\u041D\u041A\u0420\u0415\u041C\u0415\u041D\u0422",
           "ImagePath": null,
           "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
         },
         "Answers": [
-          {
-            "Id": "480ddfce-90ef-4b18-b323-3d8e9224d3ef",
-            "Text": "i++",
-            "ImagePath": null,
-            "Points": 0.3,
-            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
-          },
           {
             "Id": "27a84354-dc06-4b30-a4ac-cec99e225b8e",
             "Text": "--i",
@@ -31,15 +24,22 @@
             "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
           },
           {
-            "Id": "a2be62df-d57c-408e-9fe6-ad4f9c5b20bb",
-            "Text": "++i",
+            "Id": "480ddfce-90ef-4b18-b323-3d8e9224d3ef",
+            "Text": "i\u002B\u002B",
             "ImagePath": null,
-            "Points": 0,
+            "Points": 0.3,
             "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
           },
           {
             "Id": "a2be62df-d57c-408e-9fe6-ad4f9c5b28bb",
             "Text": "i--",
+            "ImagePath": null,
+            "Points": 0,
+            "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
+          },
+          {
+            "Id": "a2be62df-d57c-408e-9fe6-ad4f9c5b20bb",
+            "Text": "\u002B\u002Bi",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "bb41791a-46ca-48c5-88cc-89bc34ca8d15"
@@ -50,37 +50,37 @@
         "Question": {
           "Id": "68d8c3ec-9536-4262-bc26-52ba0df6ec21",
           "Type": "DefaultQuestion",
-          "Text": "Кто лучший разработчик на языке программирования ПАЙСОН?",
+          "Text": "\u041A\u0442\u043E \u043B\u0443\u0447\u0448\u0438\u0439 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A \u043D\u0430 \u044F\u0437\u044B\u043A\u0435 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u041F\u0410\u0419\u0421\u041E\u041D?",
           "ImagePath": null,
           "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
         },
         "Answers": [
           {
-            "Id": "9b85e33a-7330-4910-9b20-ecada1fdf4c3",
-            "Text": "Денис Савочка (также известен как Denix Payson)",
-            "ImagePath": null,
-            "Points": 0.4,
-            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
-          },
-          {
             "Id": "31d87455-2a2d-42a0-ba84-acb83f2dbf43",
-            "Text": "Лауферман",
+            "Text": "\u041B\u0430\u0443\u0444\u0435\u0440\u043C\u0430\u043D",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
           },
           {
             "Id": "a7b7b885-ee0b-4217-bcba-8de05f07805d",
-            "Text": "Серджио Скорых",
+            "Text": "\u0421\u0435\u0440\u0434\u0436\u0438\u043E \u0421\u043A\u043E\u0440\u044B\u0445",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
           },
           {
             "Id": "a7b7b885-ee0b-4217-bcba-8de05f07405d",
-            "Text": "Максонелло Джордан (также известный как Payson Enjoyer)",
+            "Text": "\u041C\u0430\u043A\u0441\u043E\u043D\u0435\u043B\u043B\u043E \u0414\u0436\u043E\u0440\u0434\u0430\u043D (\u0442\u0430\u043A\u0436\u0435 \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u043A\u0430\u043A Payson Enjoyer)",
             "ImagePath": null,
             "Points": 0,
+            "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
+          },
+          {
+            "Id": "9b85e33a-7330-4910-9b20-ecada1fdf4c3",
+            "Text": "\u0414\u0435\u043D\u0438\u0441 \u0421\u0430\u0432\u043E\u0447\u043A\u0430 (\u0442\u0430\u043A\u0436\u0435 \u0438\u0437\u0432\u0435\u0441\u0442\u0435\u043D \u043A\u0430\u043A Denix Payson)",
+            "ImagePath": null,
+            "Points": 0.4,
             "QuestionId": "68d8c3ec-9536-4262-bc26-52ba0df6ec21"
           }
         ]
@@ -89,28 +89,28 @@
         "Question": {
           "Id": "4d59384c-2494-45fb-ac32-afaeac0a46c8",
           "Type": "DefaultQuestion",
-          "Text": "Что важнее?",
+          "Text": "\u0427\u0442\u043E \u0432\u0430\u0436\u043D\u0435\u0435?",
           "ImagePath": null,
           "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368"
         },
         "Answers": [
           {
-            "Id": "b6e1e797-5365-43c9-b38a-7d8cb5661990",
-            "Text": "ЗНАНИЕ ПАЙСОНА",
+            "Id": "de16c04a-93d5-48ff-b271-d729b65e6b31",
+            "Text": "\u0417\u041D\u0410\u041D\u0418\u0415 \u0421\u0418 \u0428\u0410\u0420\u041F\u0410",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
           },
           {
             "Id": "480baaca-7eb3-4207-b1da-bd5a2ac3540b",
-            "Text": "УМЕНИЕ ИНТЕГРИРОВАТЬ",
+            "Text": "\u0423\u041C\u0415\u041D\u0418\u0415 \u0418\u041D\u0422\u0415\u0413\u0420\u0418\u0420\u041E\u0412\u0410\u0422\u042C",
             "ImagePath": null,
             "Points": 0.3,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"
           },
           {
-            "Id": "de16c04a-93d5-48ff-b271-d729b65e6b31",
-            "Text": "ЗНАНИЕ СИ ШАРПА",
+            "Id": "b6e1e797-5365-43c9-b38a-7d8cb5661990",
+            "Text": "\u0417\u041D\u0410\u041D\u0418\u0415 \u041F\u0410\u0419\u0421\u041E\u041D\u0410",
             "ImagePath": null,
             "Points": 0,
             "QuestionId": "4d59384c-2494-45fb-ac32-afaeac0a46c8"

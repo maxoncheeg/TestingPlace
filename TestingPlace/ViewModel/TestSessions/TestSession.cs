@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.Answers;
 
-namespace TestingPlace.Model.Testing.TestSessions
+namespace TestingPlace.ViewModel.TestSessions
 {
     public class TestSession(Test test) : ITestSession
     {
@@ -19,9 +20,9 @@ namespace TestingPlace.Model.Testing.TestSessions
 
         public event EventHandler<QuestionEventArgs>? QuestionChanged;
         public event Action? QuestionAnswered;
-		public event Action? TestCompleted;
+        public event Action? TestCompleted;
 
-		public void Answer(IQuestionAnswer answer)
+        public void Answer(IQuestionAnswer answer)
         {
             if (_answers.ContainsKey(CurrentQuestionIndex))
             {
@@ -32,12 +33,12 @@ namespace TestingPlace.Model.Testing.TestSessions
             QuestionAnswered?.Invoke();
         }
 
-		public void Complete()
-		{
+        public void Complete()
+        {
             TestCompleted?.Invoke();
         }
 
-		public bool NextQuestion()
+        public bool NextQuestion()
         {
             if (_test.QuestionCount > _currentQuestionIndex + 1)
             {

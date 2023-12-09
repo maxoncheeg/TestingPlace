@@ -4,16 +4,15 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using TestingPlace.Model.Testing;
-using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.ViewModel.Commands;
 using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel.UserControls
 {
     internal class TestListViewModel : BaseViewModel
     {
         private IDataManager _manager;
-        private bool _isSearching = false;
 
         private ObservableCollection<Test> _tests = new();
         private List<string> _testThemes = new();
@@ -137,8 +136,8 @@ namespace TestingPlace.ViewModel.UserControls
                     Tests = new(_manager.TestRepository.GetAll());
                     return;
                 }
-                else
-                    Tests = new();
+                
+                Tests = new();
 
                 if (ThemeIndex == (int)TestTheme.Любая)
                     foreach (var test in _manager.TestRepository.GetAll())

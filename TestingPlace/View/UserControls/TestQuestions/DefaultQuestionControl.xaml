@@ -48,7 +48,8 @@
             ItemsSource="{Binding Answers, Mode=OneWay}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Hidden"
-            SelectedIndex="{Binding SelectedIndex}">
+            SelectedIndex="{Binding SelectedIndex}"
+            SelectionMode="Single">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="3,3">

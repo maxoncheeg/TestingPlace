@@ -1,5 +1,4 @@
 ﻿using System;
-using TestingPlace.Model;
 
 namespace TestingPlace.Model.Testing
 {

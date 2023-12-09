@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.Answers;
 
-namespace TestingPlace.Model.Testing.TestSessions
+namespace TestingPlace.ViewModel.TestSessions
 {
     public interface ITestSession
     {

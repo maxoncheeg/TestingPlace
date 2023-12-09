@@ -5,7 +5,6 @@ using System;
 using System.Threading.Tasks;
 using TestingPlace.Data.Tests;
 using TestingPlace.Data.Users;
-using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.Model.Users;
 
 namespace TestingPlace.ViewModel.Managers

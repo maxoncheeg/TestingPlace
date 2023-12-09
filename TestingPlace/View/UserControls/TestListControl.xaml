@@ -122,18 +122,13 @@
                     HorizontalContentAlignment="Stretch"
                     Background="Transparent"
                     BorderBrush="Transparent"
+                    ItemContainerStyle="{StaticResource SelectionList}"
                     ItemsSource="{Binding Tests, Mode=OneWay}"
                     ScrollViewer.VerticalScrollBarVisibility="Hidden"
                     SelectedIndex="{Binding ListSelectedIndex}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <DockPanel Margin="0,10" LastChildFill="True">
-                                <DockPanel.Background>
-                                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
-                                        <GradientStop Offset="0.4" Color="Transparent" />
-                                        <GradientStop Offset="1" Color="{DynamicResource ColorUltraViolet}" />
-                                    </LinearGradientBrush>
-                                </DockPanel.Background>
                                 <TextBlock
                                     Margin="5"
                                     DockPanel.Dock="Right"

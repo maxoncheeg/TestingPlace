@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
-using TestingPlace.Model.Testing.TestSessions;
+using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel.UserControls.TestQuestions
 {

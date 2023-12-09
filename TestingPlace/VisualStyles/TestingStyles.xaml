@@ -255,6 +255,88 @@
         </Setter>
     </Style>
 
+    <Style x:Key="JordanButton" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        x:Name="border"
+                        TextBlock.FontFamily="Cascadia Mono"
+                        TextBlock.FontSize="20"
+                        TextBlock.FontWeight="Medium"
+                        TextBlock.Foreground="{StaticResource Snow}">
+                        <Border.Background>
+                            <LinearGradientBrush MappingMode="RelativeToBoundingBox" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                        <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                        <RotateTransform Angle="300.256" CenterX="0.5" CenterY="0.5" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop x:Name="first" Offset="0" Color="{DynamicResource ColorMunsell}" />
+                                <GradientStop x:Name="second" Offset="1" Color="{StaticResource ColorSpaceCadet}" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="over">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="first"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorUltraViolet}"
+                                            Duration="0:0:0:0.6" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="second"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorPeriwinkle}"
+                                            Duration="0:0:0:0.6" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="over" />
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="notover">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="first"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorMunsell}"
+                                            Duration="0:0:0:0.3" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="second"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorSpaceCadet}"
+                                            Duration="0:0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="notover" />
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="ToggleButton">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -423,43 +505,13 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
-                                <GradientStop x:Name="zero" Offset="0" />
-                                <GradientStop x:Name="first" Offset="0.12" />
-                                <GradientStop x:Name="second" Offset="1" />
+                                <GradientStop x:Name="zero" Offset="0" Color="Transparent" />
+                                <GradientStop x:Name="first" Offset="0.12" Color="Transparent" />
+                                <GradientStop x:Name="second" Offset="1" Color="{StaticResource ColorUltraViolet}" />
                             </LinearGradientBrush>
                         </Border.Background>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <MultiTrigger.EnterActions>
-                                <BeginStoryboard x:Name="selected">
-                                    <Storyboard>
-                                        <ColorAnimation
-                                            Storyboard.TargetName="zero"
-                                            Storyboard.TargetProperty="Color"
-                                            To="{StaticResource ColorSnow}"
-                                            Duration="0:0:0:0.6" />
-                                        <ColorAnimation
-                                            Storyboard.TargetName="first"
-                                            Storyboard.TargetProperty="Color"
-                                            To="{StaticResource ColorPeriwinkle}"
-                                            Duration="0:0:0:0.6" />
-                                        <ColorAnimation
-                                            Storyboard.TargetName="second"
-                                            Storyboard.TargetProperty="Color"
-                                            To="{StaticResource ColorMunsell}"
-                                            Duration="0:0:0:0.6" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
-                            <MultiTrigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="selected" />
-                            </MultiTrigger.ExitActions>
-                        </MultiTrigger>
-
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="False" />
@@ -493,10 +545,21 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="over">
                                     <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="zero"
+                                            Storyboard.TargetProperty="Color"
+                                            To="Transparent"
+                                            Duration="0:0:0:0.6" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="first"
+                                            Storyboard.TargetProperty="Color"
+                                            To="Transparent"
+                                            Duration="0:0:0:0.6" />
                                         <ColorAnimation
                                             Storyboard.TargetName="second"
                                             Storyboard.TargetProperty="Color"
@@ -513,10 +576,21 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="False" />
+                                <Condition Property="IsSelected" Value="False" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="notover">
                                     <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="zero"
+                                            Storyboard.TargetProperty="Color"
+                                            To="Transparent"
+                                            Duration="0:0:0:0.6" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="first"
+                                            Storyboard.TargetProperty="Color"
+                                            To="Transparent"
+                                            Duration="0:0:0:0.6" />
                                         <ColorAnimation
                                             Storyboard.TargetName="second"
                                             Storyboard.TargetProperty="Color"
@@ -529,21 +603,36 @@
                                 <StopStoryboard BeginStoryboardName="notover" />
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>
-                        <!--<Trigger Property="IsSelected" Value="true">
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource ColorMunsell}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                        </Trigger>
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true" />
-                                <Condition Property="Selector.IsSelectionActive" Value="false" />
+                                <Condition Property="IsSelected" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}" />
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}}" />
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="selected">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="zero"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorSnow}"
+                                            Duration="0:0:0:0.6" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="first"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorPeriwinkle}"
+                                            Duration="0:0:0:0.6" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="second"
+                                            Storyboard.TargetProperty="Color"
+                                            To="{StaticResource ColorMunsell}"
+                                            Duration="0:0:0:0.6" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="selected" />
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

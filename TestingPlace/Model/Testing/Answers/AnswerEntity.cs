@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestingPlace.Model;
 
 namespace TestingPlace.Model.Testing.Answers
 {
-    public class AnswerEntity : IEntity
+    public class AnswerEntity : IEntity, IAnswer
     {
         public Guid Id { get; }
         public string Text { get; } = string.Empty;

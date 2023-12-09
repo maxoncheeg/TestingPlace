@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
-using TestingPlace.Model.Testing.TestSessions;
 using TestingPlace.View.MessageBoxes;
 using TestingPlace.View.UserControls.TestQuestions;
 using TestingPlace.ViewModel;
 using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.View
 {
