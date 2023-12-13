@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,28 +7,26 @@ using TestingPlace.Model.Testing.Questions;
 
 namespace TestingPlace.Model.Testing
 {
-    public class Test : TestEntity, ITest, IEnumerable
-	{
-		private List<ITestQuestion> _questions = new();
+    public class Test : AbstractTestEntity
+    {
+        [JsonProperty("questions")] private List<ITestQuestion> _questions;
 
-		public ITestQuestion this[int index]
+        [JsonIgnore]
+        public ITestQuestion this[int index]
 		{
 			get => _questions[index];
 		}
+        [JsonIgnore]
+        public int QuestionCount { get => _questions.Count; }
+        [JsonIgnore]
+        public override IReadOnlyCollection<ITestQuestion> Questions => _questions;
 
-		public int QuestionCount { get => _questions.Count; }
-
-		private Test(Guid Id, string Name, TestTheme theme, Guid AuthorId, List<ITestQuestion> _questions)
-			: base(Id, Name, theme, AuthorId)
+        [JsonConstructor]
+        public Test(Guid Id, string Name, TestTheme theme, Guid AuthorId, List<ITestQuestion> questions, TimeSpan time)
+			: base(Id, Name, theme, AuthorId, time)
 		{
-			this._questions = new(_questions);
+			_questions = new(questions);
         }
-
-		public static Test Create(Guid id, string name, TestTheme theme, Guid authorId, List<ITestQuestion> questions) => 
-			new(id, name, theme, authorId, questions);
-
-        public static Test Create(string name, TestTheme theme, Guid authorId, List<ITestQuestion> questions) =>
-			new(Guid.NewGuid(), name, theme, authorId, questions);
 
         public IEnumerator GetEnumerator()
         {
@@ -35,9 +34,6 @@ namespace TestingPlace.Model.Testing
 				yield return this[i];
         }
 
-        public double GetTotalPoints()
-        {
-			return _questions.Sum(question => question.GetPoints());
-        }
+        public override double GetTotalPoints() => _questions.Sum(question => question.GetPoints());      
     }
 }

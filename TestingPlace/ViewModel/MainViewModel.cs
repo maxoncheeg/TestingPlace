@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using TestingPlace.Model;
 using TestingPlace.Model.Testing;
 using TestingPlace.ViewModel.Managers;
 using TestingPlace.ViewModel.UserControls;
@@ -115,16 +116,17 @@ namespace TestingPlace.ViewModel
 
             await Task.Run(() =>
             {
-                foreach (var test in _manager.CurrentUser.Solves)
-                    if (_manager.TestRepository.GetBy(x => x.Id == test.TestId).FirstOrDefault() is Test foundTest && foundTest != null)
+                foreach (var solve in _manager.CurrentUser.Solves)
+                    if (solve.Test is IEntity entity && _manager.TestRepository.Get(entity.Id) is Test foundTest && foundTest != null)
                     {
                         counter++;
-                        sum += test.BestPoints / foundTest.GetTotalPoints();
+                        sum += solve.BestPoints / foundTest.GetTotalPoints();
                     }
             });
 
             double avg = sum / counter;
             if (avg > 1) avg = 1;
+            else if (double.IsNaN(avg)) avg = 0;
 
             return Math.Round(avg, 2);
         }

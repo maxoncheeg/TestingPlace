@@ -9,10 +9,10 @@ namespace TestingPlace.ViewModel.UserControls.TestQuestions
     {
         private int _selectedIndex = -1;
         private ITestSession _testSession;
-        private ObservableCollection<QuestionAnswer> _answers = new();
+        private ObservableCollection<IQuestionAnswer> _answers = new();
         private string _title = string.Empty;
 
-        public ObservableCollection<QuestionAnswer> Answers
+        public ObservableCollection<IQuestionAnswer> Answers
         {
             get => _answers;
             set

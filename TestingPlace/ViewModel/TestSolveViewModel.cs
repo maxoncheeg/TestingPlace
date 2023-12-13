@@ -118,7 +118,7 @@ namespace TestingPlace.ViewModel
 
             if (_manager.CurrentUser != null)
             {
-                if (_manager.CurrentUser.Solves.FirstOrDefault(x => x.TestId == _testSession.Test.Id) is TestSolveEntity testSolve
+                if (_manager.CurrentUser.Solves.FirstOrDefault(x => x.Test.Equals(_testSession.Test)) is TestSolveEntity testSolve
                     && testSolve != null)
                 {
                     testSolve.Attempts++;
@@ -126,7 +126,7 @@ namespace TestingPlace.ViewModel
                 }
                 else
                 {
-                    TestSolveEntity entity = new(Guid.NewGuid(), _testSession.Test.Id, _manager.CurrentUser.Id, points, 1);
+                    TestSolveEntity entity = new(Guid.NewGuid(), _testSession.Test.Id, _manager.CurrentUser.Id, points, 1, _testSession.Test);
                     _manager.CurrentUser.Solves.Add(entity);
                 }
 

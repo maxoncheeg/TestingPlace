@@ -62,7 +62,7 @@ namespace TestingPlace.ViewModel.Managers
         public bool TryRegisterUser(string login, string password, string name, string email, string role)
         {
             password = Convert.ToBase64String(MD5.HashData(Encoding.UTF8.GetBytes(password)));
-            UserEntity user = new(Guid.NewGuid(), login, password, name, email);
+            UserEntity user = new UserEntity(Guid.NewGuid(), login, password, name, email);
 
             return UserRepository.Add(user);
         }

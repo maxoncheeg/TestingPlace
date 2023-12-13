@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 using TestingPlace.Model.Users;
 
@@ -19,7 +19,7 @@ namespace TestingPlace.Data.Users.Json
 
         public bool Load()
         {
-            using var stream = File.Open(_savePath, FileMode.Open);
+            using var stream = File.Open(_savePath, FileMode.OpenOrCreate);
             using var reader = new StreamReader(stream);
 
             string jsonText = reader.ReadToEnd();
@@ -28,8 +28,7 @@ namespace TestingPlace.Data.Users.Json
 
             try
             {
-                List<UserEntity>? users = JsonSerializer.Deserialize<List<UserEntity>>(jsonText);
-
+                List<UserEntity>? users = JsonConvert.DeserializeObject<List<UserEntity>>(jsonText, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
                 if (users is null) return false;
 
                 _users = users;
@@ -51,7 +50,7 @@ namespace TestingPlace.Data.Users.Json
             using var stream = File.Open(_savePath, FileMode.Create);
             using var writer = new StreamWriter(stream);
 
-            string textedTests = JsonSerializer.Serialize(_users, new JsonSerializerOptions() { WriteIndented = true });
+            string textedTests = JsonConvert.SerializeObject(_users, Formatting.Indented, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All });
             writer.Write(textedTests);
 
             return true;

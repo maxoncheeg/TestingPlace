@@ -5,7 +5,7 @@ namespace TestingPlace.Model.Testing.Answers
 {
 	static class AnswerListExtensions
 	{
-		public static void RandomShuffle(this List<QuestionAnswer> answers, Random random, int steps)
+		public static void RandomShuffle(this List<IQuestionAnswer> answers, Random random, int steps)
 		{
 			for (int i = 0; i < steps; i++)
 				for (int j = 0; j < answers.Count; j++)

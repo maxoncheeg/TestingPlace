@@ -26,10 +26,10 @@ namespace TestingPlace.View.UserControls.TestCreation
         public QuestionCreationWindow(ITestCreationSession session)
         {
             InitializeComponent();
-            var context = new QuestionCreationViewModel(session);
-            DataContext = context;
+            //var context = new QuestionCreationViewModel(session);
+           // DataContext = context;
 
-            context.GettingFilePath += OnGettingFilePath;
+            //context.GettingFilePath += OnGettingFilePath;
         }
 
         private string OnGettingFilePath()
