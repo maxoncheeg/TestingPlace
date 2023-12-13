@@ -1,72 +1,362 @@
-[
-  {
-    "Id": "f3115d11-5f32-4801-b605-9e5e10355237",
-    "Login": "t",
-    "Password": "xMpCOKC5I4INzFCab3WEmw==",
-    "Name": "\u0422\u0435\u0441\u0442\u043E\u0432 \u0422\u0435\u0441\u0442 \u0422\u0435\u0441\u0442\u043E\u0432\u0438\u0447",
-    "Email": "test@test.test",
-    "IsTeacher": true,
-    "Solves": [
-      {
-        "Id": "f081455f-c876-4a52-9f7c-5ac8c8851e7a",
-        "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368",
-        "UserId": "f3115d11-5f32-4801-b605-9e5e10355237",
-        "Attempts": 10,
-        "BestPoints": 5945
+{
+  "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Users.UserEntity, TestingPlace]], System.Private.CoreLib",
+  "$values": [
+    {
+      "$type": "TestingPlace.Model.Users.UserEntity, TestingPlace",
+      "Id": "57ac4e32-07eb-4392-bee0-fd5661621796",
+      "Login": "t",
+      "Password": "aY1RoZ2KEhzlgUmde3AWaA==",
+      "Name": "111",
+      "Email": "",
+      "IsTeacher": false,
+      "Solves": {
+        "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.ITestSolve, TestingPlace]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "cc6f0f0a-942b-4059-bec4-442713c523f0",
+            "TestId": "aafb4e68-084b-4e19-b6d6-253c4ec39939",
+            "UserId": "57ac4e32-07eb-4392-bee0-fd5661621796",
+            "Attempts": 1,
+            "BestPoints": 20.0,
+            "Test": {
+              "$type": "TestingPlace.Model.Testing.Test, TestingPlace",
+              "questions": {
+                "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Questions.ITestQuestion, TestingPlace]], System.Private.CoreLib",
+                "$values": [
+                  {
+                    "$type": "TestingPlace.Model.Testing.Questions.DefaultQuestion, TestingPlace",
+                    "answer": {
+                      "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                      "Id": "c2fa62d1-c90e-403b-b623-27c3cf6a35e1",
+                      "Text": "РЕШАТЬ ИНТЕГРАЛЫ",
+                      "ImagePath": null,
+                      "Points": 10.0,
+                      "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                    },
+                    "incorrectAnswers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "80141162-1d57-4e0d-b50b-1b2abbc5f693",
+                          "Text": "ПИСАТЬ НА C SHARP",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "d41e9cf7-9f93-42ee-a785-2a675989181a",
+                          "Text": "ПИСАТЬ НА Py SON",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                        }
+                      ]
+                    },
+                    "Id": "4be6b7db-d7d0-4bcc-a438-db0d4241d657",
+                    "ImagePath": null,
+                    "TestId": "aafb4e68-084b-4e19-b6d6-253c4ec39939",
+                    "Type": "DefaultQuestion",
+                    "Text": "ЧТО ВАЖНЕЕ?",
+                    "Answers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "d41e9cf7-9f93-42ee-a785-2a675989181a",
+                          "Text": "ПИСАТЬ НА Py SON",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "c2fa62d1-c90e-403b-b623-27c3cf6a35e1",
+                          "Text": "РЕШАТЬ ИНТЕГРАЛЫ",
+                          "ImagePath": null,
+                          "Points": 10.0,
+                          "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "80141162-1d57-4e0d-b50b-1b2abbc5f693",
+                          "Text": "ПИСАТЬ НА C SHARP",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "d7a80840-eb9e-47bd-93be-d32329926424"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "TestingPlace.Model.Testing.Questions.DefaultQuestion, TestingPlace",
+                    "answer": {
+                      "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                      "Id": "23c314c3-7a90-404e-9bbd-8b21a140fecc",
+                      "Text": "7",
+                      "ImagePath": null,
+                      "Points": 10.0,
+                      "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                    },
+                    "incorrectAnswers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "a7605127-969e-430e-b39a-d11f49afa5df",
+                          "Text": "1",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "7d2812f9-947f-44fb-9f09-41d87a9c8fd7",
+                          "Text": "2",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "ecf1097d-56d7-48a8-8a48-3cebf1d64440",
+                          "Text": "3",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "05d39c20-b341-48d8-81a0-dd237ff507d5",
+                          "Text": "4",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "fe2a5595-ade4-4543-b075-5f66091c9c83",
+                          "Text": "5",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "786f48de-c48f-42c0-9af7-f3766779ace8",
+                          "Text": "6",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "a7a2538d-c8b3-45fb-be20-c446507499f4",
+                          "Text": "8",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "363f6a4d-9414-4e56-9735-a5a0ab818054",
+                          "Text": "9",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        }
+                      ]
+                    },
+                    "Id": "9bfdafb7-f6b2-4e69-a420-31f62f9f6737",
+                    "ImagePath": null,
+                    "TestId": "aafb4e68-084b-4e19-b6d6-253c4ec39939",
+                    "Type": "DefaultQuestion",
+                    "Text": "1, -37, 3, 5, -33, ___. Какое число пропущено?",
+                    "Answers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "05d39c20-b341-48d8-81a0-dd237ff507d5",
+                          "Text": "4",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "363f6a4d-9414-4e56-9735-a5a0ab818054",
+                          "Text": "9",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "a7a2538d-c8b3-45fb-be20-c446507499f4",
+                          "Text": "8",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "786f48de-c48f-42c0-9af7-f3766779ace8",
+                          "Text": "6",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "a7605127-969e-430e-b39a-d11f49afa5df",
+                          "Text": "1",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "7d2812f9-947f-44fb-9f09-41d87a9c8fd7",
+                          "Text": "2",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "fe2a5595-ade4-4543-b075-5f66091c9c83",
+                          "Text": "5",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "23c314c3-7a90-404e-9bbd-8b21a140fecc",
+                          "Text": "7",
+                          "ImagePath": null,
+                          "Points": 10.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "ecf1097d-56d7-48a8-8a48-3cebf1d64440",
+                          "Text": "3",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "f9bbb3af-b2f8-4268-94f6-fc6cf967f9f3"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "TestingPlace.Model.Testing.Questions.DefaultQuestion, TestingPlace",
+                    "answer": {
+                      "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                      "Id": "a27276a6-6126-45c9-84c5-4283f262c148",
+                      "Text": "Denix Payson",
+                      "ImagePath": null,
+                      "Points": 10.0,
+                      "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                    },
+                    "incorrectAnswers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "fa3e078e-7a00-4b74-a461-2be6fe5b9b5b",
+                          "Text": "Sergio Speedster",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "2713cfbf-09b3-4259-b9fa-11d90541d569",
+                          "Text": "Maxonella Jordan",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "76d7a446-a8c9-4942-9236-54eca2588845",
+                          "Text": "Claudio Leviafan",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        }
+                      ]
+                    },
+                    "Id": "3eb6e687-7416-4779-a506-80d013758b00",
+                    "ImagePath": null,
+                    "TestId": "aafb4e68-084b-4e19-b6d6-253c4ec39939",
+                    "Type": "DefaultQuestion",
+                    "Text": "Молодому ученому с фамилией Левиафанистер(потомок рода династии Левиафан) понадобилась помощь с программированием высокоскоростных вычислительных машин на языке программирования PAYSON. К кому лучше обратится молодому ученому, чтобы выполнить работу более качественно?",
+                    "Answers": {
+                      "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.Answers.IQuestionAnswer, TestingPlace]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "76d7a446-a8c9-4942-9236-54eca2588845",
+                          "Text": "Claudio Leviafan",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "2713cfbf-09b3-4259-b9fa-11d90541d569",
+                          "Text": "Maxonella Jordan",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "a27276a6-6126-45c9-84c5-4283f262c148",
+                          "Text": "Denix Payson",
+                          "ImagePath": null,
+                          "Points": 10.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        },
+                        {
+                          "$type": "TestingPlace.Model.Testing.Answers.QuestionAnswer, TestingPlace",
+                          "Id": "fa3e078e-7a00-4b74-a461-2be6fe5b9b5b",
+                          "Text": "Sergio Speedster",
+                          "ImagePath": null,
+                          "Points": 0.0,
+                          "QuestionId": "7e8287fc-8000-46f1-bbf2-21787e8cf90b"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "Id": "aafb4e68-084b-4e19-b6d6-253c4ec39939",
+              "Name": "Проверка программиста. Часть 1",
+              "Theme": 5,
+              "AuthorId": "b536c8e9-96b8-45ca-8b6d-375e6b002c89"
+            }
+          }
+        ]
       }
-    ]
-  },
-  {
-    "Id": "c22c7c5f-0698-4926-8299-3e682dc36125",
-    "Login": "gsfgsfg",
-    "Password": "tZxnvxlqR1gZHkL3ZnDOug==",
-    "Name": "sdgsfgfsdg",
-    "Email": "1111",
-    "IsTeacher": false,
-    "Solves": []
-  },
-  {
-    "Id": "1b2ee543-38a5-4afd-aaca-e73c1946c9fb",
-    "Login": "maxoncheeg",
-    "Password": "pMXiY\u002BwD9RH8SazFqT1KUA==",
-    "Name": "Max",
-    "Email": "-",
-    "IsTeacher": false,
-    "Solves": []
-  },
-  {
-    "Id": "acf82a36-ed78-48af-b8ec-fe19135ccc4f",
-    "Login": "lauferman1956nsk",
-    "Password": "ZmmOC67iqci4BYhaFK59Rw==",
-    "Name": "\u041E\u043B\u044C\u0433\u0430 \u041B\u0435\u0432\u0438\u0430\u0444\u0430\u043D\u043E\u0432\u043D\u0430 \u041B\u0430\u0443\u0444\u0435\u0440\u043C\u0430\u043D",
-    "Email": "t",
-    "IsTeacher": false,
-    "Solves": []
-  },
-  {
-    "Id": "fb29c1d6-2041-497c-810a-194e9a56097f",
-    "Login": "tch",
-    "Password": "xMpCOKC5I4INzFCab3WEmw==",
-    "Name": "1",
-    "Email": "1",
-    "IsTeacher": false,
-    "Solves": []
-  },
-  {
-    "Id": "1a55b1e5-ee97-4256-aab8-805b2948eb71",
-    "Login": "zuckerberg",
-    "Password": "Sn0e1BRHTkAzrCnMuGU9mw==",
-    "Name": "Mark Zuckerburg",
-    "Email": "---",
-    "IsTeacher": false,
-    "Solves": [
-      {
-        "Id": "536406a4-5128-43a4-babd-feb2318da3e5",
-        "TestId": "5ee362bf-29d4-4a2e-878d-c87fef934368",
-        "UserId": "1a55b1e5-ee97-4256-aab8-805b2948eb71",
-        "Attempts": 1,
-        "BestPoints": 1
+    },
+    {
+      "$type": "TestingPlace.Model.Users.UserEntity, TestingPlace",
+      "Id": "91f0f177-c1b7-4224-b360-27ff7ea4b743",
+      "Login": "t",
+      "Password": "aY1RoZ2KEhzlgUmde3AWaA==",
+      "Name": "Testov Test Testovich",
+      "Email": "",
+      "IsTeacher": false,
+      "Solves": {
+        "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.ITestSolve, TestingPlace]], System.Private.CoreLib",
+        "$values": []
       }
-    ]
-  }
-]
+    }
+  ]
+}
