@@ -11,10 +11,6 @@ namespace TestingPlace.ViewModel
         public TestCreationWindow()
         {
             InitializeComponent();
-
-            TestCreationSessions.ITestCreationSession session = null;
-
-            us.Content = new QuestionCreationWindow(session);
         }
     }
 }

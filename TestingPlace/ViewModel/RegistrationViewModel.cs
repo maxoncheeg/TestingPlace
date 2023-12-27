@@ -1,6 +1,7 @@
 ﻿using System;
 using TestingPlace.ViewModel.Commands;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
+using TestingPlace.ViewModel.Services.Navigation;
 
 namespace TestingPlace.ViewModel
 {
@@ -14,6 +15,7 @@ namespace TestingPlace.ViewModel
         private bool _isTeacher = false;
 
         private IDataManager _manager;
+        private INavigationService _navigation;
 
         public event Action? RegistrationClicked;
         public event Action? LoginSuccess;
@@ -105,7 +107,7 @@ namespace TestingPlace.ViewModel
                 return;
             }
 
-            if (_manager.TryRegisterUser(Login, Password, Name, Email, "none"))
+            if (_manager.TryRegisterUser(Login, Password, Name, Email, _isTeacher))
             {
                 await _manager.SaveAllAsync();
                 LoginSuccess?.Invoke();
@@ -113,9 +115,10 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public RegistrationViewModel(IDataManager manager)
+        public RegistrationViewModel(INavigationService navigation,IDataManager manager)
         {
             _manager = manager;
+            _navigation = navigation;
         }
     }
 }

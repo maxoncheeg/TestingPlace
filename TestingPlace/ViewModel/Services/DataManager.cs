@@ -7,7 +7,7 @@ using TestingPlace.Data.Tests;
 using TestingPlace.Data.Users;
 using TestingPlace.Model.Users;
 
-namespace TestingPlace.ViewModel.Managers
+namespace TestingPlace.ViewModel.Services
 {
     public class DataManager : IDataManager
     {
@@ -59,10 +59,10 @@ namespace TestingPlace.ViewModel.Managers
             return false;
         }
 
-        public bool TryRegisterUser(string login, string password, string name, string email, string role)
+        public bool TryRegisterUser(string login, string password, string name, string email, bool isTeacher)
         {
             password = Convert.ToBase64String(MD5.HashData(Encoding.UTF8.GetBytes(password)));
-            UserEntity user = new UserEntity(Guid.NewGuid(), login, password, name, email);
+            UserEntity user = new UserEntity(Guid.NewGuid(), login, password, name, email) { IsTeacher = isTeacher };
 
             return UserRepository.Add(user);
         }

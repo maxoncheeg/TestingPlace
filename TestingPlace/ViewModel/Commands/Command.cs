@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace TestingPlace.ViewModel.Commands
 {
-    class Command : ICommand
+    public class Command : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 

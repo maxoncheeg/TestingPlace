@@ -3,7 +3,7 @@
   "$values": [
     {
       "$type": "TestingPlace.Model.Users.UserEntity, TestingPlace",
-      "Id": "421f2897-5511-4b98-8a60-3d46fc4cab36",
+      "Id": "02417435-635f-403e-a1fd-0d38948951d0",
       "Login": "t",
       "Password": "xMpCOKC5I4INzFCab3WEmw==",
       "Name": "Testov Test Testovich",
@@ -11,7 +11,24 @@
       "IsTeacher": true,
       "Solves": {
         "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.ITestSolve, TestingPlace]], System.Private.CoreLib",
-        "$values": []
+        "$values": [
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "6fc010e5-9f09-4e8d-b6b0-0fa3287041b6",
+            "TestId": "ac313c79-cc03-4fb4-a0d7-22c0a5c43d6b",
+            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "Attempts": 10,
+            "BestPoints": 30.0
+          },
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "f1a60b40-3571-4d0e-8a36-8d3d0a7325af",
+            "TestId": "6cab7eb0-8b09-4f2c-adcd-7bdb3d8de6f1",
+            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "Attempts": 1,
+            "BestPoints": 1.0
+          }
+        ]
       }
     }
   ]

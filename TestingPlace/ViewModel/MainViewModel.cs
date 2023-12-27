@@ -4,18 +4,19 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using TestingPlace.Model;
 using TestingPlace.Model.Testing;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
+using TestingPlace.ViewModel.Services.Navigation;
 using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.ViewModel
 {
     internal class MainViewModel : BaseViewModel
     {
-        private UserControl _menuControl;
-        private UserControl _testListControl;
         private IDataManager _manager;
+        private INavigationService _navigation;
 
         private UserControl? _actualControl = null;
+
         private string _login = string.Empty;
         private string _name = string.Empty;
 
@@ -70,9 +71,10 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public MainViewModel(IDataManager manager, UserControl menuControl, UserControl testListControl)
+        public MainViewModel(INavigationService navigation, IDataManager manager)
         {
             _manager = manager;
+            _navigation = navigation;
 
             if (_manager.CurrentUser != null)
             {
@@ -80,15 +82,10 @@ namespace TestingPlace.ViewModel
                 Name = _manager.CurrentUser.Name;
             }
 
-            _menuControl = menuControl;
-            _testListControl = testListControl;
 
-            ActualControl = _menuControl;
 
-            if (_menuControl.DataContext is MainMenuViewModel model)
-            {
-                model.TestListButtonClicked += OnTestListButtonClicked;
-            }
+            _navigation.UserControlNavigating += OnUserControlNavigating; 
+            ActualControl = _navigation.ShowCurrentWindowUserControl(TestingPlaceUserControls.MainWindow_MainMenu, new object[] { _navigation, _manager });
         }
 
         public async Task UpdateInfo()
@@ -102,9 +99,14 @@ namespace TestingPlace.ViewModel
             Notify(nameof(PointsAmount));
         }
 
+        private void OnUserControlNavigating(UserControl obj)
+        {
+            ActualControl = obj;
+        }
+
         private void OnTestListButtonClicked()
         {
-            ActualControl = _testListControl;
+            //ActualControl = ;
         }
 
         private async Task<double> CalculateAverageTestPercent()
@@ -117,9 +119,9 @@ namespace TestingPlace.ViewModel
             await Task.Run(() =>
             {
                 foreach (var solve in _manager.CurrentUser.Solves)
-                    if (solve.Test is IEntity entity && _manager.TestRepository.Get(entity.Id) is Test foundTest && foundTest != null)
+                    if (solve is TestSolveEntity entity && _manager.TestRepository.Get(entity.TestId) is Test foundTest && foundTest != null)
                     {
-                        counter++;
+                                               counter++;
                         sum += solve.BestPoints / foundTest.GetTotalPoints();
                     }
             });

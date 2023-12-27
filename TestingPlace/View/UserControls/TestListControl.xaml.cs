@@ -5,15 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TestingPlace.Model.Testing;
-using TestingPlace.ViewModel.Managers;
 using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.View.UserControls
@@ -23,11 +14,9 @@ namespace TestingPlace.View.UserControls
     /// </summary>
     public partial class TestListControl : UserControl
     {
-        public TestListControl(IDataManager manager)
+        public TestListControl()
         {
             InitializeComponent();
-
-            DataContext = new TestListViewModel(manager);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

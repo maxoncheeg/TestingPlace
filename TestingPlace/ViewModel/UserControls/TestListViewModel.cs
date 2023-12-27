@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using TestingPlace.Model.Testing;
 using TestingPlace.ViewModel.Commands;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
+using TestingPlace.ViewModel.Services.Navigation;
 using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel.UserControls
@@ -13,6 +14,7 @@ namespace TestingPlace.ViewModel.UserControls
     internal class TestListViewModel : BaseViewModel
     {
         private IDataManager _manager;
+        private INavigationService _navigation;
 
         private ObservableCollection<Test> _tests = new();
         private List<string> _testThemes = new();
@@ -104,14 +106,14 @@ namespace TestingPlace.ViewModel.UserControls
             if (_listSelectedIndex < 0 || _tests.Count <= _listSelectedIndex) return;
 
             ITestSession session = new TestSession(_tests[_listSelectedIndex]);
-            TestSessionStarted?.Invoke(session);
+            _navigation.NavigateTo(TestingPlaceWindows.TestSolveWindow, new object[] { session });
         }
         #endregion
 
-        public TestListViewModel(IDataManager manager)
+        public TestListViewModel(INavigationService navigation, IDataManager manager)
         {
-
             _manager = manager;
+            _navigation = navigation;
 
             Tests = new(_manager.TestRepository.GetAll());
             ListSelectedIndex = 0;

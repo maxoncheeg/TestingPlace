@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows;
 using TestingPlace.View.MessageBoxes;
-using TestingPlace.View.UserControls.TestQuestions;
 using TestingPlace.ViewModel;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
 using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.View
@@ -13,24 +12,11 @@ namespace TestingPlace.View
     /// </summary>
     public partial class TestSolveWindow : Window
     {
-        private Window _previousWindow;
-
-        public TestSolveWindow(Window window, IDataManager manager, ITestSession session)
+        public TestSolveWindow()
         {
-            _previousWindow = window;
-
             InitializeComponent();
 
             this.Loaded += OnLoaded;
-            this.Closed += OnClosed;
-
-            DefaultQuestionControl control = new DefaultQuestionControl(session);
-
-            TestSolveViewModel context = new TestSolveViewModel(manager, session, control);
-            DataContext = context;
-
-            context.OnMessage += OnMessage;
-            session.TestCompleted += () => this.Close();
         }
 
         private void OnMessage(string title, string message)
@@ -38,14 +24,13 @@ namespace TestingPlace.View
             MessageBoxWindow.ShowMessage(title, message);
         }
 
-        private void OnClosed(object? sender, EventArgs e)
-        {
-            _previousWindow.Visibility = Visibility.Visible;
-        }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            _previousWindow.Hide();
+            if(DataContext is TestSolveViewModel viewModel)
+            {
+                viewModel.OnMessage += OnMessage;
+            }
         }
     }
 }

@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using TestingPlace.Model.Testing;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
 using TestingPlace.ViewModel.Commands;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
+using TestingPlace.ViewModel.Services.Navigation;
 using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel
 {
     internal class TestSolveViewModel : BaseViewModel
     {
+        private int _selectedIndex = -1;
+        private string _title = string.Empty;
+        private ObservableCollection<IQuestionAnswer> _answers = new();
+
         private ITestSession _testSession;
         private IDataManager _manager;
-        private UserControl _defaultQuestionControl;
+        private INavigationService _navigation;
 
         private bool _isPrevCommandEnabled;
         private bool _isNextCommandEnabled;
@@ -25,16 +31,6 @@ namespace TestingPlace.ViewModel
         public event Action<string, string>? OnMessage;
 
         #region Bindings
-        public UserControl ActualControl
-        {
-            get => _defaultQuestionControl;
-            set
-            {
-                _defaultQuestionControl = value;
-                Notify();
-            }
-        }
-
         public int QuestionNumber => _testSession.CurrentQuestionIndex + 1;
 
         public int QuestionCount => _testSession.Test.QuestionCount;
@@ -60,6 +56,40 @@ namespace TestingPlace.ViewModel
                 Notify();
             }
         }
+
+        public ObservableCollection<IQuestionAnswer> Answers
+        {
+            get => _answers;
+            set
+            {
+                _answers = value;
+                Notify();
+            }
+        }
+
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                Notify();
+            }
+        }
+
+        public int SelectedIndex
+        {
+            get => _selectedIndex;
+            set
+            {
+                _selectedIndex = value;
+
+                if (SelectedIndex != -1 && _testSession != null)
+                    _testSession.Answer(Answers[SelectedIndex]);
+
+                Notify();
+            }
+        }
         #endregion
 
         #region Commands
@@ -73,13 +103,6 @@ namespace TestingPlace.ViewModel
 
                 UpdateCommandEnable();
 
-                switch (_testSession.Test[_testSession.CurrentQuestionIndex])
-                {
-                    case DefaultQuestion:
-                        ActualControl = _defaultQuestionControl;
-                        break;
-                }
-                 
                 Notify(nameof(QuestionNumber));
                 Notify(nameof(AnsweredQuestionCount));
             }
@@ -94,13 +117,6 @@ namespace TestingPlace.ViewModel
                     OnMessage?.Invoke("Внимание", "Дальше вопросов нет");
 
                 UpdateCommandEnable();
-
-                switch (_testSession.Test[_testSession.CurrentQuestionIndex])
-                {
-                    case DefaultQuestion:
-                        ActualControl = _defaultQuestionControl;
-                        break;
-                }
 
                 Notify(nameof(QuestionNumber));
                 Notify(nameof(AnsweredQuestionCount));
@@ -118,7 +134,7 @@ namespace TestingPlace.ViewModel
 
             if (_manager.CurrentUser != null)
             {
-                if (_manager.CurrentUser.Solves.FirstOrDefault(x => x.Test.Equals(_testSession.Test)) is TestSolveEntity testSolve
+                if (_manager.CurrentUser.Solves.FirstOrDefault(x => x.TestId == _testSession.Test.Id) is ITestSolve testSolve
                     && testSolve != null)
                 {
                     testSolve.Attempts++;
@@ -126,7 +142,7 @@ namespace TestingPlace.ViewModel
                 }
                 else
                 {
-                    TestSolveEntity entity = new(Guid.NewGuid(), _testSession.Test.Id, _manager.CurrentUser.Id, points, 1, _testSession.Test);
+                    TestSolveEntity entity = new(Guid.NewGuid(), _testSession.Test.Id, _manager.CurrentUser.Id, points, 1);
                     _manager.CurrentUser.Solves.Add(entity);
                 }
 
@@ -139,25 +155,23 @@ namespace TestingPlace.ViewModel
         }
         #endregion
 
-        public TestSolveViewModel(IDataManager manager, ITestSession session, UserControl defaultQuestionControl)
+        public TestSolveViewModel(INavigationService navigation, IDataManager manager, ITestSession session)
         {
-            if (session == null) throw new ArgumentNullException();
-            if (manager == null) throw new ArgumentNullException();
+            if (session == null) throw new ArgumentNullException(nameof(session));
+            if (manager == null) throw new ArgumentNullException(nameof(manager));
+            if (navigation == null) throw new ArgumentNullException(nameof(navigation));
 
             _manager = manager;
             _testSession = session;
-            _defaultQuestionControl = defaultQuestionControl;
+            _navigation = navigation;   
 
             UpdateCommandEnable();
 
             _testSession.QuestionAnswered += OnQuestionAnswered;
             Notify(nameof(QuestionCount));
-            switch (_testSession.Test[_testSession.CurrentQuestionIndex])
-            {
-                case DefaultQuestion:
-                    ActualControl = _defaultQuestionControl;
-                    break;
-            }
+
+            _testSession.QuestionChanged += OnQuestionChanged;
+            OnQuestionChanged(this, new(_testSession.Test[_testSession.CurrentQuestionIndex]));
         }
 
         private void OnQuestionAnswered()
@@ -174,6 +188,19 @@ namespace TestingPlace.ViewModel
         {
             IsPrevCommandEnabled = _testSession.CurrentQuestionIndex - 1 >= 0;
             IsNextCommandEnabled = _testSession.CurrentQuestionIndex + 1 < _testSession.Test.QuestionCount;
+        }
+
+        private void OnQuestionChanged(object? sender, QuestionEventArgs e)
+        {
+            if (e.Question is DefaultQuestion question)
+            {
+                Answers = new(question.Answers);
+                if (_testSession.Answers.ContainsKey(_testSession.CurrentQuestionIndex) && _testSession.Answers[_testSession.CurrentQuestionIndex] is QuestionAnswer answer)
+                    SelectedIndex = Answers.IndexOf(answer);
+                else SelectedIndex = -1;
+
+                Title = question.Text;
+            }
         }
     }
 }

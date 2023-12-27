@@ -21,16 +21,13 @@ namespace TestingPlace.Model.Testing
         public int Attempts { get; set; }
         public double BestPoints { get; set; }
 
-        public ITest Test { get; }
-
-        public TestSolveEntity(Guid Id, Guid TestId, Guid UserId, double BestPoints, int Attempts, ITest test)
+        public TestSolveEntity(Guid Id, Guid TestId, Guid UserId, double BestPoints, int Attempts)
         {
             this.Id = Id;
             this.TestId = TestId;
             this.UserId = UserId;
             this.BestPoints = BestPoints;
             this.Attempts = Attempts;
-            Test = test;
         }
     }
 }

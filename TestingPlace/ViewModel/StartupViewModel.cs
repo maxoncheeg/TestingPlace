@@ -1,6 +1,7 @@
 ﻿using System;
 using TestingPlace.ViewModel.Commands;
-using TestingPlace.ViewModel.Managers;
+using TestingPlace.ViewModel.Services;
+using TestingPlace.ViewModel.Services.Navigation;
 
 namespace TestingPlace.ViewModel
 {
@@ -10,9 +11,8 @@ namespace TestingPlace.ViewModel
         private string _password = string.Empty;
 
         private IDataManager _manager;
+        private INavigationService _navigation;
 
-        public event Action? RegistrationClicked;
-        public event Action? LoginSuccess;
         public event Action<string>? LoginError;
 
         #region Bindings
@@ -43,7 +43,7 @@ namespace TestingPlace.ViewModel
         {
             if (_manager.TryAuthorizeUser(Login, Password))
             {
-                LoginSuccess?.Invoke();
+                _navigation.NavigateTo(TestingPlaceWindows.MainWindow);
             }
             else
             {
@@ -54,13 +54,14 @@ namespace TestingPlace.ViewModel
         public Command Register => Command.Create(RegisterMethod);
         private void RegisterMethod(object? sender, EventArgs e)
         {
-            RegistrationClicked?.Invoke();
+            _navigation.NavigateTo(TestingPlaceWindows.RegistrationWindow);
         }
         #endregion
 
-        public StartupViewModel(IDataManager manager)
+        public StartupViewModel(INavigationService navigation, IDataManager manager)
         {
             _manager = manager;
+            _navigation = navigation;
         }
     }
 }

@@ -1,147 +1,170 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.Model.Testing.Questions;
 using TestingPlace.ViewModel.Commands;
-using TestingPlace.ViewModel.TestCreationSessions;
+using TestingPlace.ViewModel.Services.Navigation;
+using TestingPlace.ViewModel.TestSessions;
 
 namespace TestingPlace.ViewModel.UserControls.TestCreation
 {
     internal class QuestionCreationViewModel : BaseViewModel
     {
-        //private int _questionIndex;
-        //private int _answerIndex;
+        private bool _isVisibleRegistered;
+        private INavigationService _navigation;
+        private ITestCreationSession _session;
 
-        //private QuestionAnswer _currentAnswer;
+        private int _questionIndex;
 
-        //private string _questionTitle = string.Empty;
-        //private string _answerText = string.Empty;
-        //private string _imagePath = string.Empty;
-        //private string _points = string.Empty;
+        private int _answersAmount;
+        private string _questionTitle = string.Empty;
+        private string _imagePath = string.Empty;
 
-        //private ObservableCollection<QuestionAnswer> _answers = new();
-        //private ObservableCollection<Question> _questions = new();
+        private ObservableCollection<ITestQuestion> _questions = new();
 
-        //public event Func<string>? GettingFilePath;
+        public event Func<string>? GettingFilePath;
 
-        //#region Bindings
-        //public int QuestionIndex
-        //{
-        //    get => _questionIndex;
-        //    set
-        //    {
-        //        _questionIndex = value;
-        //        Notify();
-        //    }
-        //}
+        #region Bindings
+        public int QuestionIndex
+        {
+            get => _questionIndex;
+            set
+            {
+                _questionIndex = value;
+                Notify();
+            }
+        }
 
-        //public int AnswerIndex
-        //{
-        //    get => _answerIndex;
-        //    set
-        //    {
-        //        _answerIndex = value;
-        //        Notify();
-        //    }
-        //}
+        public int AnswersAmount
+        {
+            get => _answersAmount;
+            set
+            {
+                _answersAmount = value;
+                Notify();
+            }
+        }
 
-        //public string QuestionTitle
-        //{
-        //    get => _questionTitle;
-        //    set
-        //    {
-        //        _questionTitle = value;
-        //        Notify();
-        //    }
-        //}
+        public string QuestionTitle
+        {
+            get => _questionTitle;
+            set
+            {
+                _questionTitle = value;
+                Notify();
+            }
+        }
 
-        //public string AnswerText
-        //{
-        //    get => _answerText;
-        //    set
-        //    {
-        //        _answerText = value;
-        //        Notify();
-        //    }
-        //}
+        public string QuestionPath
+        {
+            get => _imagePath;
+            set
+            {
+                _imagePath = value;
+                Notify();
+            }
+        }
 
-        //public string ImagePath
-        //{
-        //    get => _imagePath;
-        //    set
-        //    {
-        //        _imagePath = value;
-        //        Notify();
-        //    }
-        //}
+        public ObservableCollection<ITestQuestion> Questions
+        {
+            get => _questions;
+            set
+            {
+                _questions = value;
+                Notify();
+            }
+        }
+        #endregion
 
-        //public string Points
-        //{
-        //    get => _points;
-        //    set
-        //    {
-        //        _points = value;
-        //        Notify();
-        //    }
-        //}
+        #region Commands
+        public Command OpenImage => Command.Create(OpenImageMethod);
+        private void OpenImageMethod(object? sender, EventArgs args)
+        {
+            QuestionPath = GettingFilePath?.Invoke() ?? string.Empty;
+        }
 
-        //public ObservableCollection<QuestionAnswer> Answers
-        //{
-        //    get => _answers;
-        //    set
-        //    {
-        //        _answers = value;
-        //        Notify();
-        //    }
-        //}
+        public Command SaveQuestion => Command.Create(SaveQuestionMethod);
+        private void SaveQuestionMethod(object? sender, EventArgs args)
+        {            
+            QuestionAnswer? answer = _session.CurrentQuestionAnswers.FirstOrDefault(x => x.Points > 0) as QuestionAnswer;
+            if (answer == null) return;//!!!
+            var answers = new List<IQuestionAnswer>(_session.CurrentQuestionAnswers);
+            answers.Remove(answer);
+            DefaultQuestion question = new DefaultQuestion(Guid.NewGuid(), _session.TestId, QuestionTitle, answer, answers);
 
-        //public ObservableCollection<Question> Questions
-        //{
-        //    get => _questions;
-        //    set
-        //    {
-        //        _questions = value;
-        //        Notify();
-        //    }
-        //}
-        //#endregion
+            if (_questionIndex == -1 || Questions.Count == 0)
+                _session.Questions.Add(question, _session.CurrentQuestionAnswers);
+            else
+            {
+                _session.Questions.Remove(_session.Questions.Keys.ElementAt(_questionIndex));
+                _session.Questions.Add(question, _session.CurrentQuestionAnswers);
+            }
 
-        //#region Commands
-        //public Command OpenImage => Command.Create(OpenImageMethod);
-        //private void OpenImageMethod(object? sender, EventArgs args)
-        //{
-        //    ImagePath = GettingFilePath?.Invoke() ?? " ";
-        //}
+            Questions = new(_session.Questions.Keys);
+            QuestionIndex = Questions.IndexOf(question);
+            UpdateInfo();
+        }
 
-        //public Command SaveQuestion => Command.Create(SaveQuestionMethod);
-        //private void SaveQuestionMethod(object? sender, EventArgs args)
-        //{
+        public Command DeleteQuestion => Command.Create(DeleteQuestionMethod);
+        private void DeleteQuestionMethod(object? sender, EventArgs args)
+        {
+            if (QuestionIndex < _session.Questions.Count)
+            {
+                _session.CurrentQuestionAnswers.RemoveAt(QuestionIndex);
+                Questions = new(_session.Questions.Keys);
 
-        //}
+                QuestionIndex = 0;//!!!
+                UpdateInfo();
+            }
+        }
 
-        //public Command DeleteQuestion => Command.Create(DeleteQuestionMethod);
-        //private void DeleteQuestionMethod(object? sender, EventArgs args)
-        //{
+        public Command NewQuestion => Command.Create(NewQuestionMethod);
+        private void NewQuestionMethod(object? sender, EventArgs args)
+        {
+            Questions = new(_session.Questions.Keys);
+            QuestionIndex = -1;
+            DefineNewQuestion();
+        }
 
-        //}
+        public Command OpenAnswersRedactor => Command.Create(OpenAnswersRedactorMethod);
+        private void OpenAnswersRedactorMethod(object? sender, EventArgs args)
+        {
+            if (!_isVisibleRegistered)
+            {
+                _navigation.RegisterOnCurrentWindowVisibleChanged(() => AnswersAmount = _session.CurrentQuestionAnswers.Count);
+                _isVisibleRegistered = true;
+            }
+            _navigation.NavigateTo(TestingPlaceWindows.AnswerCreationWindow, new object[] { _session });
+        }
+        #endregion
 
-        //public Command NewQuestion => Command.Create(NewQuestionMethod);
-        //private void NewQuestionMethod(object? sender, EventArgs args)
-        //{
+        public QuestionCreationViewModel(INavigationService navigation, ITestCreationSession session)
+        {
+            _navigation = navigation;
+            _session = session;
+            Questions = new(_session.Questions.Keys);
 
-        //}
+            DefineNewQuestion();
+        }
 
-        //public Command NewAnswer => Command.Create(NewAnswerMethod);
-        //private void NewAnswerMethod(object? sender, EventArgs args)
-        //{
-        //    QuestionAnswer answer = QuestionAnswer.Create(_answerText, int.Parse(_points));
+        private void DefineNewQuestion()
+        {
+            _session.NewQuestion();
+            QuestionTitle = string.Empty;
+            QuestionPath = string.Empty;
+            AnswersAmount = _session.CurrentQuestionAnswers.Count;
+        }
 
-        //}
-        //#endregion
-
-        //public QuestionCreationViewModel(ITestCreationSession session)
-        //{
-
-        //}
+        private void UpdateInfo()
+        {
+            if (QuestionIndex >= 0 && Questions.Count > 0)
+            {
+                QuestionTitle = Questions[QuestionIndex].Text;
+            }
+        }
     }
 }
+
+

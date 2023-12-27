@@ -3,7 +3,7 @@
   <Class Name="TestingPlace.Model.Testing.Questions.DefaultQuestion" Collapsed="true">
     <Position X="11.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Testing\Questions\DefaultQuestion.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -23,11 +23,11 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TestingPlace.Model.Testing.Answers.AnswerEntity">
+  <Class Name="TestingPlace.Model.Testing.Answers.AbstractAnswerEntity">
     <Position X="17.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAgAAAAAAAAIAAAAAAAAAAAAAACAQAAAA=</HashCode>
-      <FileName>Model\Testing\Answers\AnswerEntity.cs</FileName>
+      <HashCode>AAACAAgAAAAAgAAAAAAAAIAAAAAAAAAAAAAACAQAAAA=</HashCode>
+      <FileName>Model\Testing\Answers\AbstractAnswerEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -57,7 +57,7 @@
   <Class Name="TestingPlace.Model.Testing.Answers.QuestionAnswer">
     <Position X="17.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAAAgAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Testing\Answers\QuestionAnswer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -65,16 +65,15 @@
   <Class Name="TestingPlace.Model.Testing.Test" Collapsed="true">
     <Position X="9" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAABAACAAAAAAACAAAAEQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAABAACAAAAAAACAAAAAQEAAAAAAAAAAA=</HashCode>
       <FileName>Model\Testing\Test.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TestingPlace.Model.Testing.TestEntity" Collapsed="true">
+  <Class Name="TestingPlace.Model.Testing.AbstractTestEntity" Collapsed="true">
     <Position X="9" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAQAAAAAAQAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Model\Testing\TestEntity.cs</FileName>
+      <HashCode>AAICAAAAAAAAAAAQAAAAAAQAAAAAAAAEABAAAAAAAQA=</HashCode>
+      <FileName>Model\Testing\AbstractTestEntity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -108,15 +107,15 @@
       <FileName>Data\Tests\Json\JsonTest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TestingPlace.Data.Tests.Json.JsonTestRepository" Collapsed="true">
-    <Position X="14.75" Y="11" Width="1.5" />
+  <Class Name="TestingPlace.Data.Tests.Json.JsonTestRepository">
+    <Position X="13.25" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgIAgAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Data\Tests\Json\JsonTestRepository.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TestingPlace.Data.Tests.TestRepository" Collapsed="true">
-    <Position X="14.75" Y="9.75" Width="1.5" />
+  <Class Name="TestingPlace.Data.Tests.TestRepository">
+    <Position X="11" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAYAAAAgAAAAAABAAAAAAAAAAIEIAAAABgAAAAAAAAA=</HashCode>
       <FileName>Data\Tests\TestRepository.cs</FileName>
@@ -141,14 +140,14 @@
   <Interface Name="TestingPlace.Model.Testing.Questions.ITestQuestion" Collapsed="true">
     <Position X="23.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAACgAAAAA=</HashCode>
       <FileName>Model\Testing\Questions\ITestQuestion.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TestingPlace.Model.Testing.Answers.IQuestionAnswer" Collapsed="true">
     <Position X="20.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Model\Testing\Answers\IQuestionAnswer.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -162,7 +161,7 @@
   <Interface Name="TestingPlace.Model.Testing.ITest" Collapsed="true">
     <Position X="22" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAQAAAAAAQAAAAAAAAEAAAAAAAAAQA=</HashCode>
       <FileName>Model\Testing\ITest.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -184,7 +183,7 @@
     <Position X="20.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAgQAAAAAAAACAAAAEAAAAAAAAAAhAA=</HashCode>
-      <FileName>Model\Testing\TestEntity.cs</FileName>
+      <FileName>Model\Testing\TestSolveEntity.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

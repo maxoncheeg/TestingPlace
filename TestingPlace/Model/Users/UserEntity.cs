@@ -16,7 +16,7 @@ namespace TestingPlace.Model.Users
         public IList<ITestSolve> Solves { get; set; }
 
         [JsonConstructor]
-        public UserEntity(Guid Id, string Login, string Password, string Name, string Email, List<TestSolveEntity> testSolves)
+        public UserEntity(Guid Id, string Login, string Password, string Name, string Email, bool isTeacher, List<TestSolveEntity> testSolves)
         {
             this.Id = Id;
             this.Login = Login;
@@ -26,6 +26,7 @@ namespace TestingPlace.Model.Users
             if (testSolves != null)
                 Solves = new List<ITestSolve>(testSolves);
             else Solves = new List<ITestSolve>();
+            IsTeacher = isTeacher;
         }
 
         public UserEntity(Guid Id, string Login, string Password, string Name, string Email)

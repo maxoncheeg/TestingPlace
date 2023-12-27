@@ -1,0 +1,167 @@
+﻿<UserControl
+    x:Class="TestingPlace.View.UserControls.TestCreation.QuestionCreationWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TestingPlace.View.UserControls.TestCreation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid Margin="0,0,0,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="AliceBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Viewbox>
+                <Label DockPanel.Dock="Top" Style="{StaticResource MunselUltraVioletLabel}">Вопросы:</Label>
+            </Viewbox>
+
+            <ListBox
+                x:Name="testListBox"
+                Grid.Row="1"
+                Margin="10"
+                HorizontalContentAlignment="Stretch"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                ItemContainerStyle="{StaticResource SelectionList}"
+                ItemsSource="{Binding Questions, Mode=OneWay}"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                SelectedIndex="{Binding QuestionIndex}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Margin="0,10" LastChildFill="True">
+                            <TextBlock
+                                Margin="5"
+                                DockPanel.Dock="Right"
+                                FontSize="20"
+                                Text="{Binding Text}"
+                                TextAlignment="Left" />
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <UniformGrid Grid.Row="2" Rows="1">
+                <Button
+                    Margin="2"
+                    Command="{Binding NewQuestion}"
+                    Content="Новый"
+                    Style="{StaticResource ToggleButonStl}" />
+                <Button
+                    Margin="2"
+                    Command="{Binding DeleteQuestion}"
+                    Content="Удалить"
+                    Style="{StaticResource ToggleButonStl}" />
+            </UniformGrid>
+        </Grid>
+
+        <Grid Grid.Column="1" Background="{StaticResource Snow}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+
+            <DockPanel>
+                <Label
+                    Content="Вопрос:"
+                    DockPanel.Dock="Top"
+                    FontSize="15"
+                    Style="{StaticResource MunselUltraVioletLabel}" />
+                <TextBox
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    DockPanel.Dock="Top"
+                    FontFamily="Cascadia Mono"
+                    FontSize="20"
+                    Foreground="{StaticResource UltraViolet}"
+                    Text="{Binding QuestionTitle}"
+                    TextAlignment="Center" />
+            </DockPanel>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3.19*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <DockPanel>
+                    <Label
+                        Content="Количество вариантов ответа:"
+                        DockPanel.Dock="Top"
+                        FontSize="15"
+                        Style="{StaticResource MunselUltraVioletLabel}" />
+                    <Label
+                        HorizontalContentAlignment="Right"
+                        Content="{Binding AnswersAmount}"
+                        DockPanel.Dock="Top"
+                        FontSize="20"
+                        FontStyle="Italic"
+                        FontWeight="Bold"
+                        Style="{StaticResource MunselUltraVioletLabel}" />
+
+                    <Label
+                        Content="Путь до картинки:"
+                        DockPanel.Dock="Top"
+                        FontSize="15"
+                        Style="{StaticResource MunselUltraVioletLabel}" />
+                    <Label
+                        HorizontalContentAlignment="Right"
+                        Content="{Binding QuestionPath}"
+                        DockPanel.Dock="Top"
+                        FontSize="15"
+                        FontStyle="Italic"
+                        FontWeight="Bold"
+                        Style="{StaticResource MunselUltraVioletLabel}" />
+
+                    <Button
+                        Margin="0,20,100,20"
+                        Command="{Binding OpenImage}"
+                        Content="Открыть картинку"
+                        Style="{StaticResource ToggleButonStl}">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0, 10, 10, 0" />
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </DockPanel>
+
+                <Button
+                    Grid.Row="1"
+                    Margin="100,10,0,2"
+                    Command="{Binding OpenAnswersRedactor}"
+                    Content="Редактировать ответы"
+                    Style="{StaticResource ToggleButonStl}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10, 0, 0, 10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+                <Button
+                    Grid.Row="2"
+                    Margin="100,10,0,2"
+                    Command="{Binding SaveQuestion}"
+                    Content="Сохранить вопрос"
+                    Style="{StaticResource ToggleButonStl}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10, 0, 0, 10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

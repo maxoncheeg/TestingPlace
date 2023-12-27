@@ -3,7 +3,7 @@ using TestingPlace.Data.Tests;
 using TestingPlace.Data.Users;
 using TestingPlace.Model.Users;
 
-namespace TestingPlace.ViewModel.Managers
+namespace TestingPlace.ViewModel.Services
 {
     public interface IDataManager
     {
@@ -15,6 +15,6 @@ namespace TestingPlace.ViewModel.Managers
         public Task LoadAllAsync();
 
         public bool TryAuthorizeUser(string login, string password);
-        public bool TryRegisterUser(string login, string password, string name, string email, string role);
+        public bool TryRegisterUser(string login, string password, string name, string email, bool isTeacher);
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TestingPlace.View.MessageBoxes;
 using TestingPlace.ViewModel;
-using TestingPlace.ViewModel.Managers;
 
 namespace TestingPlace.View
 {
@@ -13,22 +11,20 @@ namespace TestingPlace.View
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        private readonly Window _previousWindow;
-        public RegistrationWindow(Window previousWindow, IDataManager manager)
+        public RegistrationWindow()
         {
-            _previousWindow = previousWindow;
-            _previousWindow.Hide();
-
             InitializeComponent();
-            DataContext = new RegistrationViewModel(manager);
 
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
             if (DataContext is RegistrationViewModel registrationViewModel)
             {
                 registrationViewModel.LoginError += OnError;
                 registrationViewModel.LoginSuccess += OnSuccess;
             }
-
-            Closed += OnClosed;
         }
 
         private void OnSuccess()
@@ -55,7 +51,7 @@ namespace TestingPlace.View
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void PasswordChanged(object sender, RoutedEventArgs e)
@@ -68,11 +64,6 @@ namespace TestingPlace.View
         {
             if (DataContext is RegistrationViewModel viewModel && sender is PasswordBox box)
                 viewModel.PasswordRepeat = box.Password;
-        }
-
-        private void OnClosed(object? sender, EventArgs e)
-        {
-            _previousWindow.Show();
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System.Windows.Controls;
-using TestingPlace.ViewModel.Managers;
-using TestingPlace.ViewModel.UserControls;
 
 namespace TestingPlace.View.UserControls
 {
@@ -9,11 +7,9 @@ namespace TestingPlace.View.UserControls
     /// </summary>
     public partial class MainMenuControl : UserControl
     {
-        public MainMenuControl(IDataManager manager)
+        public MainMenuControl()
         {
             InitializeComponent();
-
-            DataContext = new MainMenuViewModel(manager);
         }
     }
 }
