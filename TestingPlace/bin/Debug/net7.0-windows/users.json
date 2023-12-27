@@ -27,6 +27,30 @@
             "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
             "Attempts": 1,
             "BestPoints": 1.0
+          },
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "809ae245-aab9-498c-95ab-71a1bd181a83",
+            "TestId": "07f442a3-ad26-4b08-8137-edb5d5e9b574",
+            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "Attempts": 1,
+            "BestPoints": 20.0
+          },
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "8bc49ffb-bdc7-4e1b-9a95-c680eb1e97f5",
+            "TestId": "1a0c7b6f-73ee-409a-b234-df5c4946bb1e",
+            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "Attempts": 2,
+            "BestPoints": 30.0
+          },
+          {
+            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
+            "Id": "b17edd4e-c2e0-4603-9b7a-26c289327d85",
+            "TestId": "6b104273-d2e4-4789-b9fb-404eba1108c4",
+            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "Attempts": 1,
+            "BestPoints": 2.0
           }
         ]
       }

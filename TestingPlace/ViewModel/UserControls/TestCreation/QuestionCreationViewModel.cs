@@ -25,6 +25,7 @@ namespace TestingPlace.ViewModel.UserControls.TestCreation
         private ObservableCollection<ITestQuestion> _questions = new();
 
         public event Func<string>? GettingFilePath;
+        public event Action<string, string>? MessageReceiving;
 
         #region Bindings
         public int QuestionIndex
@@ -34,6 +35,7 @@ namespace TestingPlace.ViewModel.UserControls.TestCreation
             {
                 _questionIndex = value;
                 Notify();
+                UpdateInfo();
             }
         }
 
@@ -89,7 +91,12 @@ namespace TestingPlace.ViewModel.UserControls.TestCreation
         private void SaveQuestionMethod(object? sender, EventArgs args)
         {            
             QuestionAnswer? answer = _session.CurrentQuestionAnswers.FirstOrDefault(x => x.Points > 0) as QuestionAnswer;
-            if (answer == null) return;//!!!
+
+            if (answer == null) {
+                MessageReceiving?.Invoke("Внимание", "Вы не создали ни одного правильного ответа, с баллами отличными от 0!");
+                return; 
+            }
+
             var answers = new List<IQuestionAnswer>(_session.CurrentQuestionAnswers);
             answers.Remove(answer);
             DefaultQuestion question = new DefaultQuestion(Guid.NewGuid(), _session.TestId, QuestionTitle, answer, answers);
@@ -105,6 +112,7 @@ namespace TestingPlace.ViewModel.UserControls.TestCreation
             Questions = new(_session.Questions.Keys);
             QuestionIndex = Questions.IndexOf(question);
             UpdateInfo();
+            DefineNewQuestion();
         }
 
         public Command DeleteQuestion => Command.Create(DeleteQuestionMethod);
@@ -162,6 +170,7 @@ namespace TestingPlace.ViewModel.UserControls.TestCreation
             if (QuestionIndex >= 0 && Questions.Count > 0)
             {
                 QuestionTitle = Questions[QuestionIndex].Text;
+                AnswersAmount = _session.CurrentQuestionAnswers.Count;
             }
         }
     }

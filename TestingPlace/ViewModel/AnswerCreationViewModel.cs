@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TestingPlace.Model.Testing.Answers;
 using TestingPlace.ViewModel.Commands;
 using TestingPlace.ViewModel.TestSessions;
@@ -19,6 +20,7 @@ namespace TestingPlace.ViewModel
         private ObservableCollection<IQuestionAnswer> _answers = new();
 
         public event Func<string>? GettingFilePath;
+        public event Action<string, string>? MessageReceiving;
 
         #region Bindings
         public int AnswerIndex
@@ -27,7 +29,9 @@ namespace TestingPlace.ViewModel
             set
             {
                 _answerIndex = value;
+                
                 Notify();
+                UpdateInfo();
             }
         }
 
@@ -82,21 +86,31 @@ namespace TestingPlace.ViewModel
         public Command SaveAnswer => Command.Create(SaveQuestionMethod);
         private void SaveQuestionMethod(object? sender, EventArgs args)
         {
-            if (double.TryParse(Points, out var points)) {
+            if (double.TryParse(Points, out var points))
+            {
+                if (_session.CurrentQuestionAnswers.Count(x => x.Points > 0) > 0)
+                {
+                    MessageReceiving?.Invoke("Внимание", "В вопросе уже есть правильный ответ, у которого баллы отличны от 0!");
+                    return;
+                }
+
                 AbstractAnswerEntity answer;
-                if (_answerIndex == -1){
-                    answer = new QuestionAnswer(Guid.NewGuid(), _session.CurrentQuestionId, AnswerText, points);
+                if (_answerIndex == -1)
+                {
+                    answer = new QuestionAnswer(Guid.NewGuid(), _session.CurrentQuestionId, AnswerText, points) { ImagePath = AnswerPath };
                     _session.CurrentQuestionAnswers.Add(answer);
                 }
                 else
                 {
-                    answer = new QuestionAnswer(Guid.NewGuid(), _session.CurrentQuestionId, AnswerText, points);
+                    answer = new QuestionAnswer(Guid.NewGuid(), _session.CurrentQuestionId, AnswerText, points) { ImagePath = AnswerPath };
                     _session.CurrentQuestionAnswers[_answerIndex] = answer;
                 }
                 Answers = new(_session.CurrentQuestionAnswers);
                 AnswerIndex = _session.CurrentQuestionAnswers.IndexOf(answer);
                 UpdateInfo();
+                NewAnswerMethod(this, EventArgs.Empty);
             }
+            else MessageReceiving?.Invoke("ОШИБКА", "Произошла неизвестная ошибка (на самом деле известная)");
         }
 
         public Command RemoveAnswer => Command.Create(RemoveAnswerMethod);
