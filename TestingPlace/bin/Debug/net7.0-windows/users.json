@@ -1,56 +1,23 @@
 {
-  "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Users.UserEntity, TestingPlace]], System.Private.CoreLib",
+  "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Users.User, TestingPlace]], System.Private.CoreLib",
   "$values": [
     {
-      "$type": "TestingPlace.Model.Users.UserEntity, TestingPlace",
-      "Id": "02417435-635f-403e-a1fd-0d38948951d0",
+      "$type": "TestingPlace.Model.Users.User, TestingPlace",
+      "Id": "1aa0fe4b-fded-4fd5-b8aa-8f81c121b340",
       "Login": "t",
       "Password": "xMpCOKC5I4INzFCab3WEmw==",
       "Name": "Testov Test Testovich",
-      "Email": "",
       "IsTeacher": true,
       "Solves": {
         "$type": "System.Collections.Generic.List`1[[TestingPlace.Model.Testing.ITestSolve, TestingPlace]], System.Private.CoreLib",
         "$values": [
           {
-            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
-            "Id": "6fc010e5-9f09-4e8d-b6b0-0fa3287041b6",
-            "TestId": "ac313c79-cc03-4fb4-a0d7-22c0a5c43d6b",
-            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
-            "Attempts": 10,
-            "BestPoints": 30.0
-          },
-          {
-            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
-            "Id": "f1a60b40-3571-4d0e-8a36-8d3d0a7325af",
-            "TestId": "6cab7eb0-8b09-4f2c-adcd-7bdb3d8de6f1",
-            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
+            "$type": "TestingPlace.Model.Testing.TestSolve, TestingPlace",
+            "Id": "8e1afbc1-1763-4d92-921d-1f430ce4e9f3",
+            "TestId": "5c9a3bbf-a190-4fa7-afdf-adb83c1368f3",
+            "UserId": "1aa0fe4b-fded-4fd5-b8aa-8f81c121b340",
             "Attempts": 1,
-            "BestPoints": 1.0
-          },
-          {
-            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
-            "Id": "809ae245-aab9-498c-95ab-71a1bd181a83",
-            "TestId": "07f442a3-ad26-4b08-8137-edb5d5e9b574",
-            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
-            "Attempts": 1,
-            "BestPoints": 20.0
-          },
-          {
-            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
-            "Id": "8bc49ffb-bdc7-4e1b-9a95-c680eb1e97f5",
-            "TestId": "1a0c7b6f-73ee-409a-b234-df5c4946bb1e",
-            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
-            "Attempts": 2,
-            "BestPoints": 30.0
-          },
-          {
-            "$type": "TestingPlace.Model.Testing.TestSolveEntity, TestingPlace",
-            "Id": "b17edd4e-c2e0-4603-9b7a-26c289327d85",
-            "TestId": "6b104273-d2e4-4789-b9fb-404eba1108c4",
-            "UserId": "02417435-635f-403e-a1fd-0d38948951d0",
-            "Attempts": 1,
-            "BestPoints": 2.0
+            "BestPoints": 10.0
           }
         ]
       }
